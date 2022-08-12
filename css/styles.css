@@ -50,22 +50,22 @@ nav a {
   margin-bottom: 2vh;
 }
 
-.login{
+.login {
   margin: auto;
   width: 30%;
 }
 
-.form-login{
+.form-login {
   text-align: center;
 }
 
-.form-login-submit{
+.form-login-submit {
   padding: 1.2vh;
-   background: #0087F7;
-   color: #fff;
-   border-color: #000;
-   border-radius: 10%;
-  }
+  background: #0087F7;
+  color: #fff;
+  border-color: #000;
+  border-radius: 10%;
+}
 
 
 
