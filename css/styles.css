@@ -41,18 +41,33 @@ nav a {
   font-weight: bold;
 }
 
-.jumbotron1{
+.jumbotron1 {
   height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
   background: url('../img/login.png');
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 2vh;
 }
+
+.login{
+  margin: auto;
+  width: 30%;
+}
+
+.form-login{
+  text-align: center;
+}
+
+.form-login-submit{
+  padding: 1.2vh;
+   background: #0087F7;
+   color: #fff;
+   border-color: #000;
+   border-radius: 10%;
+  }
+
+
 
 @media (min-width: 768px) {
   .jumbotron {
