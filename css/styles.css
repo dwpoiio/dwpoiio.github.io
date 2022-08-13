@@ -43,16 +43,28 @@ nav a {
 
 .jumbotron1 {
   height: 50vh;
+  background-color: #f8f9fa;
   background: url('../img/login.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   margin-bottom: 2vh;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .jumbotron1 {
+    height: 25vh;
+  }
+  /* .form-login{
+    background: green;
+  } */
 }
 
 .login {
   margin: auto;
-  width: 30%;
+  padding: auto;
+  width: 60%;
 }
 
 .form-login {
