@@ -56,10 +56,14 @@ nav a {
   .jumbotron1 {
     height: 25vh;
   }
-  /* .form-login{
-    background: green;
-  } */
 }
+
+@media (max-width: 768px) {
+  .col-3 {
+    width: 100%;
+  }
+}
+
 
 .login {
   margin: auto;

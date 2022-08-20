@@ -18,7 +18,7 @@ fetch(URL)
                         ${productos.name}<br> 
                         ${productos.currency} ${productos.cost}<br>
                         ${productos.description}<br> 
-                        ${productos.soldCount}<br> 
+                        Unidades vendidas: ${productos.soldCount}<br> 
                         </p> 
                     </div>
                 </div>
