@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- nav generico ya existente -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -36,12 +37,15 @@
       </div>
     </div>
   </nav>
+
   <main class="pb-5 container">
+    <!-- titulo con class ya creadas -->
     <div class="text-center p-4">
       <h2>Autos</h2>
       <p class="lead">Verás aquí todos las autos del sitio.</p>
     </div>
     <div class="container">
+      <!-- indice alfabetico -->
       <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
@@ -54,6 +58,7 @@
           </div>
         </div>
       </div>
+      <!-- filtro por cantidad -->
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
@@ -75,13 +80,14 @@
           </div>
         </div>
       </div>
-
+      <!-- div con id=products donde ingreso los elementos mediante js-->
       <div class="row">
         <div class="list-group" id="products"></div>
       </div>
-      
+
     </div>
   </main>
+  <!-- footer generico ya existente -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -92,6 +98,7 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
