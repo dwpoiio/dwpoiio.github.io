@@ -18,14 +18,14 @@
     <!-- formulario de ingreso a la pagina -->
     <div class="form-login">
 
-        <h2>prueba</h2><br>
+        <h2>Inicio de sesion</h2>
 
-        <label for="nombre-usuario">Email</label><br><br>
-        <input type="text" id="nombre-usuario"><br><br>
+        <label for="nombre-usuario">Email</label><br>
+        <input type="text" id="nombre-usuario"><br>
         <label for="password">Contraseña</label><br>
         <input type="password" id="password"><br><br>
 
-        <button class="form-login-submit" type="button" id="button" onclick="login()">Registrarme</button><br><br>
+        <button class="form-login-submit" type="button" id="button" onclick="login()">Registrarme</button><br>
 
     </div>
 
@@ -44,7 +44,8 @@
     <!-- div de alerta de error -->
     <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger">
         <p>Debe colocar al menos un caracter en nombre de usuario y password</p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="cerrarDiv()"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+            onclick="cerrarDiv()"></button>
     </div>
 
     <script src="js/login.js"></script>
