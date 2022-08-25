@@ -52,6 +52,13 @@ nav a {
   margin-top: 0;
 }
 
+.show{
+  opacity: 1;
+}
+.noShow{
+  opacity: 0;
+}
+
 @media (max-width: 768px) {
   .jumbotron1 {
     height: 25vh;
