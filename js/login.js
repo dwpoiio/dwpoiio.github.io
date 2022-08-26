@@ -13,7 +13,7 @@ var pass = document.getElementById('password');
 
 function login() {
     // Guardo la informacion de inicio de sesion
-    localStorage.setItem('nombre', nombre.value);
+    localStorage.setItem('usuario', nombre.value);
     localStorage.setItem('password', pass.value);
     // Verificamos si las condiciones se cumplen 
     if (nombre.value.length > 0 && pass.value.length > 0) {

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Tomo la informaciond e inicio de sesion
 // Y las guardo en variables
-let nombre_usuario = window.localStorage.getItem('nombre');
+let nombre_usuario = window.localStorage.getItem('usuario');
 // let password_usuario = localStorage.getItem('password');
 // escribo en el nav el nombre de usuario
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
