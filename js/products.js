@@ -6,7 +6,7 @@ let ordenAsc = document.getElementById("sortAsc");
 let ordenDesc = document.getElementById("sortDesc");
 let ReputacionDesc = document.getElementById("sortByCount");
 
-let categoria = localStorage.getItem("catID", "hola");
+let categoria = localStorage.getItem("catID");
 
 //llamado a la pagina y lectura de json
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria.toString() + ".json")
