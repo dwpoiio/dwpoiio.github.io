@@ -5,13 +5,15 @@ let divTitulo = document.getElementById("titulo")
 let ordenAsc = document.getElementById("sortAsc");
 let ordenDesc = document.getElementById("sortDesc");
 let ReputacionDesc = document.getElementById("sortByCount");
-
+//creo una variable con el catID guardado en la pagina
 let categoria = localStorage.getItem("catID");
-
+// array de json
+let listaPrecios = [];
 //llamado a la pagina y lectura de json
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".json")
     .then(res => res.json())
     .then(datos => {
+        
         //titulo de la pagina sacado de json
         divTitulo.innerHTML += `<h2>${datos.catName}</h2>
         <p class="lead">Verás aquí todos las autos del sitio.</p>`;
@@ -34,7 +36,11 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
                     </div>
                 </div>
             </div>`
+
+            listaPrecios.push(productos.cost);
         };
+
+        console.log(listaPrecios);        
 
         //llamar a boton ascendente $
         ordenAsc.addEventListener("click", event => {
