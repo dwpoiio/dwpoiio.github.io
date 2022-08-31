@@ -12,11 +12,9 @@ let categoria = localStorage.getItem("catID");
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".json")
     .then(res => res.json())
     .then(datos => {
-
+        //titulo de la pagina sacado de json
         divTitulo.innerHTML += `<h2>${datos.catName}</h2>
         <p class="lead">Verás aquí todos las autos del sitio.</p>`;
-
-
         //recorro un for para repetir los datos de la pagina
         for (let productos of datos.products) {
             //organizacion del div con la coleccion de productos
