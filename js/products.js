@@ -78,37 +78,31 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
 
         //llamar a boton ascendente $
         ordenAsc.addEventListener("click", event => {
-            for (i = 0; i < listaPrecios.length; i++) {
-                listaPrecios.sort(function (a, b) {
-                    if (a.cost < b.cost) return -1;
-                    if (a.cost > b.cost) return 1;
-                    return 0;
-                });
-            }
+            listaPrecios.sort(function (a, b) {
+                if (a.cost < b.cost) return -1;
+                if (a.cost > b.cost) return 1;
+                return 0;
+            });
             inner();
         });
 
         //llamar a boton descendente $
         ordenDesc.addEventListener("click", event => {
-            for (i = 0; i < listaPrecios.length; i++) {
-                listaPrecios.sort(function (a, b) {
-                    if (a.cost > b.cost) return -1;
-                    if (a.cost < b.cost) return 1;
-                    return 0;
-                });
-            }
+            listaPrecios.sort(function (a, b) {
+                if (a.cost > b.cost) return -1;
+                if (a.cost < b.cost) return 1;
+                return 0;
+            });
             inner();
         });
 
         //llamar a boton unidades vendidas descendente
         ReputacionDesc.addEventListener("click", event => {
-            for (i = 0; i < listaPrecios.length; i++) {
-                listaPrecios.sort(function (a, b) {
-                    if (a.soldCount < b.soldCount) return -1;
-                    if (a.soldCount > b.soldCount) return 1;
-                    return 0;
-                });
-            }
+            listaPrecios.sort(function (a, b) {
+                if (a.soldCount < b.soldCount) return -1;
+                if (a.soldCount > b.soldCount) return 1;
+                return 0;
+            });
             inner();
         });
 
