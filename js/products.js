@@ -53,12 +53,13 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
         };
 
         function funBuscar(evento) {
-            let resultados = listaPrecios.filter(item => {
+            listaNueva = listaPrecios.filter(item => {
                 let itemUpperCase = item.name.toUpperCase()
                 return itemUpperCase.includes(inputBuscar.value.toUpperCase());
             })
-            listaPrecios = resultados
+            listaPrecios = listaNueva
             inner();
+            listaPrecios = datos.products
         }
 
         inputBuscar.addEventListener("input", funBuscar)
