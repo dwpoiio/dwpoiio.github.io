@@ -1,7 +1,10 @@
+//verifico que exista un usuario
+if (!nombre_usuario) { window.location.href = "login.html" };
+// Tomo la informaciond e inicio de sesion
+// Y las guardo en variables
 let nombre_usuario = localStorage.getItem('usuario')
-if(!nombre_usuario){
-    window.location.href = "login.html";
-}
+// escribo en el nav el nombre de usuario
+document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 
 console.log(nombre_usuario)
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,9 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Tomo la informaciond e inicio de sesion
-// Y las guardo en variables
 
-// let password_usuario = localStorage.getItem('password');
-// escribo en el nav el nombre de usuario
-document.getElementById("nav-usuario").innerHTML = nombre_usuario;
+
+
+
