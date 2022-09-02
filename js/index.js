@@ -6,7 +6,6 @@ let nombre_usuario = localStorage.getItem('usuario')
 // escribo en el nav el nombre de usuario
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 
-console.log(nombre_usuario)
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("autos").addEventListener("click", function () {
         localStorage.setItem("catID", 101);
