@@ -98,7 +98,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
 
         //llamar a boton ascendente $
         ordenAsc.addEventListener("click", event => {
-            listaPrecios.sort(function (a, b) {
+            listaNueva.sort(function (a, b) {
                 if (a.cost < b.cost) return -1;
                 if (a.cost > b.cost) return 1;
                 return 0;
