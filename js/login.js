@@ -27,4 +27,3 @@ function login() {
         return false;
     }
 };
- var nombre_usuario1 = localStorage.getItem('usuario')

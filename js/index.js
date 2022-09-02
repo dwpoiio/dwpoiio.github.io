@@ -1,8 +1,9 @@
 let nombre_usuario = localStorage.getItem('usuario')
-if(nombre_usuario.length<0){
-    window.location.href = "login.html";
-}
+// if(nombre_usuario.length<0){
+//     window.location.href = "login.html";
+// }
 
+console.log(nombre_usuario)
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("autos").addEventListener("click", function () {
         localStorage.setItem("catID", 101);
