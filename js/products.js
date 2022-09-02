@@ -49,25 +49,20 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
             };
         };
         inner();
-
+        //funciona para filtrar los precios
         function paraFiltrar() {
             let maximo;
             let minimo;
-            if (inputMin.value != undefined || inputMin.value != null) {
-                minimo = inputMin.value
-            }
-            if (inputMax.value != undefined || inputMax.value != null) {
-                maximo = inputMax.value
-            }
-            else {
-                minimo = 0;
-                maximo = Infinity;
-            }
+            if (inputMin.value) { minimo = inputMin.value }
+            else { minimo = 0; }
+            if (inputMax.value) { maximo = inputMax.value }
+            else { maximo = Infinity; }
 
-            listaNueva = listaPrecios.filter(producto => inputMin.value <= producto.cost && inputMax.value >= producto.cost);
+            listaNueva = listaPrecios.filter(producto => minimo <= producto.cost && maximo >= producto.cost);
             listaPrecios = listaNueva;
             inner();
         };
+
         //funcion para limpiar el filtro
         function paraLimpiar() {
             listaPrecios = datos.products
@@ -78,7 +73,6 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
 
         //boton filtrar
         filtrar.addEventListener("click", paraFiltrar);
-
         //boton limpiar
         limpiarFiltro.addEventListener("click", paraLimpiar)
 
