@@ -88,6 +88,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
             listaPrecios = datos.products
             inputMin.value = '';
             inputMax.value = '';
+            inputBuscar.value = '';
             inner();
         }
 
