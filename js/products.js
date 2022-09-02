@@ -120,6 +120,6 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
 
     });
 
-    let nombre_usuario = localStorage.getItem('usuario');
-    document.getElementById("nav-usuario").innerHTML = nombre_usuario;
+let nombre_usuario = localStorage.getItem('usuario');
+document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 
