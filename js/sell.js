@@ -147,3 +147,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+let nombre_usuario = localStorage.getItem('usuario');
+document.getElementById("nav-usuario").innerHTML = nombre_usuario;
