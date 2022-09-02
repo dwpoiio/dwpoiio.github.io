@@ -59,7 +59,6 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
             })
             listaPrecios = resultados
             inner();
-            
         }
 
         inputBuscar.addEventListener("input", funBuscar)
