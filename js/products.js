@@ -8,8 +8,11 @@ let ReputacionDesc = document.getElementById("sortByCount");
 //input min y max y boton de filtrar
 let inputMin = document.getElementById("rangeFilterCountMin");
 let inputMax = document.getElementById("rangeFilterCountMax");
+//filtro y limpiar filtro
 let filtrar = document.getElementById("rangeFilterCount");
 let limpiarFiltro = document.getElementById("clearRangeFilter");
+//input de buscar
+let inputBuscar = document.getElementById("buscar")
 //creo una variable con el catID guardado en la pagina
 let categoria = localStorage.getItem("catID");
 // array de json
@@ -48,6 +51,19 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
             </div>`
             };
         };
+
+        function funBuscar(evento) {
+            let resultados = listaPrecios.filter(item => {
+                let itemUpperCase = item.name.toUpperCase()
+                return itemUpperCase.includes(inputBuscar.value.toUpperCase());
+            })
+            listaPrecios = resultados
+            inner();
+            
+        }
+
+        inputBuscar.addEventListener("input", funBuscar)
+
         inner();
         //funciona para filtrar los precios
         function paraFiltrar() {
