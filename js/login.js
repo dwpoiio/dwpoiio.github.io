@@ -18,7 +18,7 @@ function login() {
     // Verificamos si las condiciones se cumplen 
     if (nombre.value.length > 0 && pass.value.length > 0) {
         // Redirigimos a la pagina de portada
-        window.location.href = "portada.html";
+        window.location.href = "index.html";
         return true;
     }
     else {
@@ -27,4 +27,4 @@ function login() {
         return false;
     }
 };
-
+ var nombre_usuario1 = localStorage.getItem('usuario')
