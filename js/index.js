@@ -1,10 +1,11 @@
-//verifico que exista un usuario
-if (!nombre_usuario) { window.location.href = "login.html" };
 // Tomo la informaciond e inicio de sesion
 // Y las guardo en variables
 let nombre_usuario = localStorage.getItem('usuario')
 // escribo en el nav el nombre de usuario
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
+
+//verifico que exista un usuario
+if (!nombre_usuario) { window.location.href = "login.html" };
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("autos").addEventListener("click", function () {
