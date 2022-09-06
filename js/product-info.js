@@ -29,23 +29,40 @@ let listaNueva = [];
 fetch("https://japceibal.github.io/emercado-api/products/" + categoria + ".json")
     .then(res => res.json())
     .then(datos => {
-        console.log(datos);
         listaPrecios = datos;
 
-            divListaProductos.innerHTML += ` 
+        divListaProductos.innerHTML += ` 
+            
+            <div class="m-5">
             <h2>${datos.name}</h2>
-            <div class="list-group-item list-group-item-action cursor-active">
+            <hr>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col">
+                        <p>
+                        <b>Precio</b><br>
+                        ${datos.currency} ${datos.cost}<br><br>
+                        <b>Descripcion</b><br>
+                        ${datos.description}<br><br>
+                        <b>Categoria</b><br>
+                        ${datos.category}<br><br>
+                        <b>Unidades vendidas</b><br> 
+                        ${datos.soldCount}<br><br>
+                        </p> 
+                    </div>
+                </div>
+                <div class="row">
+                <b>Imagenes ilustrativas</b>
+                    <div class="col">
                         <img src="${datos.images[0]}" class="img-thumbnail">
                     </div>
                     <div class="col">
-                        <p>
-                        ${datos.name}<br> 
-                        ${datos.currency} ${datos.cost}<br>
-                        ${datos.description}<br> 
-                        Unidades vendidas: ${datos.soldCount}<br> 
-                        </p> 
+                        <img src="${datos.images[1]}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <img src="${datos.images[2]}" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <img src="${datos.images[3]}" class="img-thumbnail">
                     </div>
                 </div>
             </div>`
