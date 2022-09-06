@@ -18,6 +18,12 @@ let categoria = localStorage.getItem("catID");
 // array de json
 let listaPrecios = [];
 let listaNueva = [];
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
 //llamado a la pagina y lectura de json
 fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".json")
     .then(res => res.json())
@@ -34,7 +40,7 @@ fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".
             for (let productos of listaPrecios) {
                 //organizacion del div con la coleccion de productos
                 divListaProductos.innerHTML += ` 
-            <div class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setProductID(${productos.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${productos.image}" class="img-thumbnail">
