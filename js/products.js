@@ -25,7 +25,7 @@ function setProductID(id) {
 }
 
 //llamado a la pagina y lectura de json
-fetch("https://japceibal.github.io/emercado-api/cats_products/" + categoria + ".json")
+fetch(PRODUCTS_URL + categoria + ".json")
     .then(res => res.json())
     .then(datos => {
         listaPrecios = datos.products;
