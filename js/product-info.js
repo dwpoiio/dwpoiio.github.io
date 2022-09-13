@@ -2,14 +2,15 @@
 let divListaProductos = document.getElementById("products-info");
 let divListaComentarios = document.getElementById("products-info-comentarios");
 let divHacerComentario = document.getElementById("hacer-comentario");
+// nombre de usuario en nav
+let nombre_usuario = localStorage.getItem('usuario');
+document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 //creo una variable con el catID guardado en la pagina
 let categoria = localStorage.getItem("productID");
 let div = document.createElement('div');
 
-let nombre_usuario = localStorage.getItem('usuario');
-document.getElementById("nav-usuario").innerHTML = nombre_usuario;
-
-//llamado a la pagina y lectura de json
+//llamado a la pagina y lectura de json 
+//variando en el productID entre pagina y pagina
 fetch(PRODUCT_INFO_URL + categoria + ".json")
     .then(res => res.json())
     .then(datos => {
@@ -57,12 +58,11 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
 
             div.innerHTML = "";
 
-
             for (let comentarios of datosComent) {
 
                 div.innerHTML += `<b>${comentarios.user}</b> - ${comentarios.dateTime} - `
                 divListaComentarios.appendChild(div);
-                //agrego las estrellas naranjas
+                // Agrego las estrellas naranjas
                 for (let i = 0; i < comentarios.score; i++) {
                     let estrella = document.createElement('span');
                     estrella.classList.add("fa");
@@ -70,7 +70,7 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
                     estrella.classList.add("checked");
                     div.appendChild(estrella);
                 }
-                //completo las 5 estrellas negras
+                // Completo las 5 estrellas negras
                 if (comentarios.score < 5) {
                     let repetir = 5 - comentarios.score;
                     for (i = 0; i < repetir; i++) {
@@ -85,7 +85,7 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
         };
 
         innerComentarios();
-
+        // Completo el formulario para enviar un comentario
         divHacerComentario.innerHTML = `
         <h4>Comentar</h4>
         Tu opinion:<br>
@@ -97,6 +97,8 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
         <input type="button" class="btn btn-primary" id="inputComentario" value="Enviar">
         `
 
+        // Creo la funcion para sumar el comentario pusheando datosComent
+        // 
         let botonComentario = document.getElementById("inputComentario");
         function pushear() {
             let fecha = new Date()
@@ -119,8 +121,6 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
         }
 
         botonComentario.addEventListener("click", pushear);
-
-
 
     });
 
