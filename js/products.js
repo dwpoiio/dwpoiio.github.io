@@ -19,6 +19,7 @@ let categoria = localStorage.getItem("catID");
 let listaPrecios = [];
 let listaNueva = [];
 
+// Funcion para guardar el productId
 function setProductID(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html"
