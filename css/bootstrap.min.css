@@ -8302,6 +8302,10 @@ fieldset:disabled .btn {
     background-color:  #611562 !important
 }
 
+.bg-dark:hover {
+    background-color:  #154360   !important
+}
+
 .bg-body {
     background-color: #fff !important
 }
