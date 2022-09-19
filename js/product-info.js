@@ -1,7 +1,8 @@
-//tomo el elemento con id products
+//tomo los elementos con id products
 let divListaProductos = document.getElementById("products-info");
 let divListaComentarios = document.getElementById("products-info-comentarios");
 let divHacerComentario = document.getElementById("hacer-comentario");
+let divProductosRelacionados = document.getElementById("related-products");
 // nombre de usuario en nav
 let nombre_usuario = localStorage.getItem('usuario');
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
@@ -9,12 +10,18 @@ document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 let categoria = localStorage.getItem("productID");
 let div = document.createElement('div');
 
+// Funcion para guardar el productId
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
 //llamado a la pagina y lectura de json 
 //variando en el productID entre pagina y pagina
 fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
     .then(res => res.json())
     .then(datos => {
-        console.log(datos)
+
         divListaProductos.innerHTML += ` 
         <div class="m-5">
             <h2>${datos.name}</h2><hr>
@@ -48,6 +55,19 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
                 </div>
             </div>
         </div>`
+
+        for (recorrer of datos.relatedProducts) {
+            console.log(recorrer)
+            divProductosRelacionados.innerHTML += `
+            <div class="col-3 img-thumbnail m-3">
+            <div onclick="setProductID(${recorrer.id})" class="list-group-item-action cursor-active">
+            <img src="${recorrer.image}" alt="img" class="img-fluid">
+            ${recorrer.name}
+            <div/></div>
+            `
+        }
+
+
     });
 //llamo a la api de los comentarios
 fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
