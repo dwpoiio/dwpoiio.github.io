@@ -11,10 +11,10 @@ let div = document.createElement('div');
 
 //llamado a la pagina y lectura de json 
 //variando en el productID entre pagina y pagina
-fetch(PRODUCT_INFO_URL + categoria + ".json")
+fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
     .then(res => res.json())
     .then(datos => {
-
+        console.log(datos)
         divListaProductos.innerHTML += ` 
         <div class="m-5">
             <h2>${datos.name}</h2><hr>
@@ -50,7 +50,7 @@ fetch(PRODUCT_INFO_URL + categoria + ".json")
         </div>`
     });
 //llamo a la api de los comentarios
-fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
+fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
     .then(res => res.json())
     .then(datosComent => {
 
@@ -123,6 +123,7 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + ".json")
         botonComentario.addEventListener("click", pushear);
 
     });
+
 
 
 

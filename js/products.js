@@ -26,7 +26,7 @@ function setProductID(id) {
 }
 
 //llamado a la pagina y lectura de json
-fetch(PRODUCTS_URL + categoria + ".json")
+fetch(PRODUCTS_URL + categoria + EXT_TYPE)
     .then(res => res.json())
     .then(datos => {
         listaPrecios = datos.products;
