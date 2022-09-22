@@ -1,3 +1,7 @@
+// Selecciono input de usuario y de password
+var nombre = document.getElementById('nombre-usuario');
+var pass = document.getElementById('password');
+
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
     document.getElementById("alert-danger").classList.remove("noShow");
@@ -7,9 +11,8 @@ function cerrarDiv(){
     document.getElementById("alert-danger").classList.remove("show");
 }
 
-// Selecciono input de usuario y de password
-var nombre = document.getElementById('nombre-usuario');
-var pass = document.getElementById('password');
+localStorage.removeItem('usuario');
+localStorage.removeItem('password');
 
 function login() {
     // Guardo la informacion de inicio de sesion

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <!-- Nav -->
+  <!-- Navegador -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -23,16 +23,25 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
+            <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <p class="nav-link" id="nav-usuario"></p>
+          <!-- Agrego el menu desplegable -->
+          <li class="nav-item dropdown">
+            <!-- A con id nav-usuario -->
+            <a class="nav-link dropdown-toggle" href="#" id="nav-usuario" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></a>
+            <!-- Agrego las opciones del menu -->
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html">Cerrar sesion</a></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -85,6 +94,7 @@
       </div>
     </div>
   </main>
+  <!-- Footer -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
