@@ -10,7 +10,7 @@ function cerrarDiv(){
     document.getElementById("alert-danger").classList.add("noShow");
     document.getElementById("alert-danger").classList.remove("show");
 }
-
+// Borro los datos del usuario
 localStorage.removeItem('usuario');
 localStorage.removeItem('password');
 
