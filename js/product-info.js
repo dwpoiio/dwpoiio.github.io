@@ -10,22 +10,26 @@ document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 let categoria = localStorage.getItem("productID");
 let div = document.createElement('div');
 
+
 // Funcion para guardar el productId
 function setProductID(id) {
-    localStorage.setItem("productID", id);
-    window.location = "product-info.html"
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
 }
 
 //llamado a la pagina y lectura de json 
 //variando en el productID entre pagina y pagina
 fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
-    .then(res => res.json())
-    .then(datos => {
+  .then(res => res.json())
+  .then(datos => {
 
-        divListaProductos.innerHTML += ` 
+    divListaProductos.innerHTML += ` 
         <div class="m-5">
-            <h2>${datos.name}</h2><hr>
             <div class="row">
+            <h2 class="col">${datos.name}</h2>
+            <button class="btn btn-success btn-lg col-2" type="submit" id="compra">Comprar</button>
+            </div>
+            <hr>
                 <div class="col">
                     <p>
                     <b>Precio</b><br>
@@ -75,56 +79,60 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
             </div>
         </div>`
 
-        for (recorrer of datos.relatedProducts) {
-            divProductosRelacionados.innerHTML += `
+    for (recorrer of datos.relatedProducts) {
+      divProductosRelacionados.innerHTML += `
             <div class="col-3 img-thumbnail m-3">
             <div onclick="setProductID(${recorrer.id})" class="list-group-item-action cursor-active">
             <img src="${recorrer.image}" alt="img" class="img-fluid">
             ${recorrer.name}
             <div/></div>
             `
-        }
+    }
 
-
-    });
+    document.getElementById("compra").addEventListener("click", event => {
+      localStorage.setItem("datosLista",JSON.stringify(datos))
+      
+      location.href = "cart.html"
+    })
+  });
 //llamo a la api de los comentarios
 fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
-    .then(res => res.json())
-    .then(datosComent => {
+  .then(res => res.json())
+  .then(datosComent => {
 
-        function innerComentarios() {
+    function innerComentarios() {
 
-            div.innerHTML = "";
+      div.innerHTML = "";
 
-            for (let comentarios of datosComent) {
+      for (let comentarios of datosComent) {
 
-                div.innerHTML += `<b>${comentarios.user}</b> - ${comentarios.dateTime} - `
-                divListaComentarios.appendChild(div);
-                // Agrego las estrellas naranjas
-                for (let i = 0; i < comentarios.score; i++) {
-                    let estrella = document.createElement('span');
-                    estrella.classList.add("fa");
-                    estrella.classList.add("fa-star");
-                    estrella.classList.add("checked");
-                    div.appendChild(estrella);
-                }
-                // Completo las 5 estrellas negras
-                if (comentarios.score < 5) {
-                    let repetir = 5 - comentarios.score;
-                    for (i = 0; i < repetir; i++) {
-                        let estrella1 = document.createElement('span');
-                        estrella1.classList.add("fa");
-                        estrella1.classList.add("fa-star");
-                        div.appendChild(estrella1);
-                    }
-                }
-                div.innerHTML += `<br>${comentarios.description}<br></br>`
-            };
-        };
+        div.innerHTML += `<b>${comentarios.user}</b> - ${comentarios.dateTime} - `
+        divListaComentarios.appendChild(div);
+        // Agrego las estrellas naranjas
+        for (let i = 0; i < comentarios.score; i++) {
+          let estrella = document.createElement('span');
+          estrella.classList.add("fa");
+          estrella.classList.add("fa-star");
+          estrella.classList.add("checked");
+          div.appendChild(estrella);
+        }
+        // Completo las 5 estrellas negras
+        if (comentarios.score < 5) {
+          let repetir = 5 - comentarios.score;
+          for (i = 0; i < repetir; i++) {
+            let estrella1 = document.createElement('span');
+            estrella1.classList.add("fa");
+            estrella1.classList.add("fa-star");
+            div.appendChild(estrella1);
+          }
+        }
+        div.innerHTML += `<br>${comentarios.description}<br></br>`
+      };
+    };
 
-        innerComentarios();
-        // Completo el formulario para enviar un comentario
-        divHacerComentario.innerHTML = `
+    innerComentarios();
+    // Completo el formulario para enviar un comentario
+    divHacerComentario.innerHTML = `
         <h4>Comentar</h4>
         Tu opinion:<br>
         <textarea name="textComentario" id="textComentario" cols="50" rows="3"></textarea><br>
@@ -135,32 +143,32 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
         <input type="button" class="btn btn-primary" id="inputComentario" value="Enviar">
         `
 
-        // Creo la funcion para sumar el comentario pusheando datosComent
-        // 
-        let botonComentario = document.getElementById("inputComentario");
-        function pushear() {
-            let fecha = new Date()
-            let y = fecha.getFullYear()
-            let m = fecha.getMonth()
-            let d = fecha.getDate()
-            let h = fecha.getHours()
-            let min = fecha.getMinutes()
-            let s = fecha.getSeconds()
-            let array = {
-                product: parseInt(categoria),
-                score: parseInt(transporte.value),
-                description: textComentario.value,
-                user: nombre_usuario,
-                dateTime: y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s
-            }
-            datosComent.push(array);
-            divListaComentarios.removeChild(div);
-            innerComentarios();
-        }
+    // Creo la funcion para sumar el comentario pusheando datosComent
+    // 
+    let botonComentario = document.getElementById("inputComentario");
+    function pushear() {
+      let fecha = new Date()
+      let y = fecha.getFullYear()
+      let m = fecha.getMonth()
+      let d = fecha.getDate()
+      let h = fecha.getHours()
+      let min = fecha.getMinutes()
+      let s = fecha.getSeconds()
+      let array = {
+        product: parseInt(categoria),
+        score: parseInt(transporte.value),
+        description: textComentario.value,
+        user: nombre_usuario,
+        dateTime: y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s
+      }
+      datosComent.push(array);
+      divListaComentarios.removeChild(div);
+      innerComentarios();
+    }
 
-        botonComentario.addEventListener("click", pushear);
+    botonComentario.addEventListener("click", pushear);
 
-    });
+  });
 
 
 

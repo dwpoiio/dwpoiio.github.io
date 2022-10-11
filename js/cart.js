@@ -4,13 +4,89 @@ let nombre_usuario = localStorage.getItem('usuario')
 // escribo en el nav el nombre de usuario
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 
-let divContenedor = document.getElementById("main")
+let cartID = localStorage.getItem("cartID");
+
+let divMain = document.getElementById("main")
 let subTotalDiv = document.getElementById("subTotal")
 let cantidadDiv = document.getElementById("cantidad")
+
+// Recojo los datos de la compra guardados en el local storage
+// Parseados para poder utilizarlos
+if (JSON.parse(localStorage.getItem("datosLista"))) {
+
+  listaCompra = JSON.parse(localStorage.getItem("datosLista"))
+  let listaId = []
+
+  if (!localStorage.getItem("lista")) {
+    localStorage.setItem("lista", JSON.stringify(listaCompra))
+    var array = [JSON.parse(localStorage.getItem("lista"))]
+    localStorage.setItem("lista", JSON.stringify(array))
+  }
+
+  for (recorrer of JSON.parse(localStorage.getItem("lista"))) {
+    listaId.push(recorrer.id)
+    crearCompra(recorrer)
+  }
+
+  if (!listaId.includes(listaCompra.id)) {
+    var array = JSON.parse(localStorage.getItem("lista"))
+    array.push(listaCompra)
+    localStorage.setItem("lista", JSON.stringify(array))
+    location.reload()
+  }
+}
+
+function crearCompra(variable) {
+  let divPrincipal = document.createElement("div")
+  divPrincipal.className += "row"
+  // creo un hr
+  let hr = document.createElement("hr")
+  hr.className += "mt-2"
+  //Agrego la imagen
+  let imgDiv = document.createElement("div")
+  imgDiv.innerHTML = `<img src="${variable.images[0]}" width="100" alt="imgVenta">`
+  imgDiv.className += "col"
+  //Agrego div del name
+  let nameDiv = document.createElement("div")
+  nameDiv.innerHTML = variable.name
+  nameDiv.className += "col"
+  //Agrego el div del costo por unidad
+  let costDiv = document.createElement("div")
+  costDiv.innerHTML = `USD ${variable.cost}`
+  costDiv.className += "col"
+  //Agrego el input
+  let inputDiv = document.createElement("div")
+  let inputInterior = document.createElement("input")
+  inputInterior.setAttribute('type', 'number');
+  inputInterior.setAttribute('min', '0');
+  inputInterior.setAttribute('value', '1');
+  inputDiv.appendChild(inputInterior)
+  inputDiv.className += "col"
+  //Agrego el subTotalCompra
+  let subTotalDivCompra = document.createElement("div")
+  subTotalDivCompra.className += "col fw-bold"
+
+  function subTotalC() {
+    // El temporizador realiza el subtotalDivCompra.innerHTML cada 0.1 segundos
+    setInterval(function () {
+      subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
+    }, 100);
+  }
+  subTotalC()
+
+  divMain.appendChild(divPrincipal)
+  divPrincipal.appendChild(imgDiv)
+  divPrincipal.appendChild(nameDiv)
+  divPrincipal.appendChild(costDiv)
+  divPrincipal.appendChild(inputDiv)
+  divPrincipal.appendChild(subTotalDivCompra)
+  divMain.appendChild(hr)
+}
 
 fetch(CART_INFO_URL + 25801 + EXT_TYPE)
   .then(results => results.json())
   .then(datos => {
+
     let contenido = document.createElement("div")
     document.getElementById("name").innerHTML = datos.articles[0].name
     document.getElementById("unitCost").innerHTML = `USD ${datos.articles[0].unitCost}`
@@ -24,8 +100,9 @@ fetch(CART_INFO_URL + 25801 + EXT_TYPE)
     }
     subTotalF()
 
-    divContenedor.appendChild(contenido)
+    divMain.appendChild(contenido)
   });
+
 
 
 

@@ -17,22 +17,26 @@
   <div id="navegador"></div>
   <main>
     <div class="container">
-      <div id="main">
+      <div>
         <div>
           <h2>Carrito de compras</h2><br>
           <h4>Articulos a comprar</h4>
-          <div class="row">
-            <div class="col"></div>
-            <div class="col fw-bold">Nombre</div>
-            <div class="col fw-bold">Costo</div>
-            <div class="col fw-bold">Cantidad</div>
-            <div class="col fw-bold">Subtotal</div>
+          <div id="main" class="row">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col fw-bold">Nombre</div>
+              <div class="col fw-bold">Costo</div>
+              <div class="col fw-bold">Cantidad</div>
+              <div class="col fw-bold">Subtotal</div>
+            </div>
             <hr size="5" style="opacity:1;">
-            <div class="col" id="image"></div>
-            <div class="col" id="name"></div>
-            <div class="col" id="unitCost"></div>
-            <div class="col"><input type="number" id="cantidad" min="0" value="1"></input></div>
-            <div class="col fw-bold" id="subTotal"></div>
+            <div class="row">
+              <div class="col" id="image"></div>
+              <div class="col" id="name"></div>
+              <div class="col" id="unitCost"></div>
+              <div class="col"><input type="number" id="cantidad" min="0" value="1"></input></div>
+              <div class="col fw-bold" id="subTotal"></div>
+            </div>
             <hr class="mt-2">
           </div>
           <div class="row">
@@ -72,6 +76,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </main>
   <!-- Footer -->
