@@ -49,7 +49,8 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
       }
     })
   }
-  // Agrego elementos al array if no coinciden los ID
+
+  // Agrego elementos al array si no coinciden los ID
   if (!listaId.includes(listaCompra.id)) {
     var array = valorLocal
     array.push(listaCompra)
