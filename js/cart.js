@@ -27,13 +27,12 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
     localStorage.setItem("lista", JSON.stringify(array))
     location.reload()
   }
-
-
+  // Coloco en pantalla los elementos
   for (recorrer of valorLocal) {
     listaId.push(recorrer.id)
     crearCompra(recorrer)
   }
-
+  // Eliminar productos
   for (var i = 0; i < valorLocal.length; i++) {
     console.log(valorLocal.length)
     let hola = document.getElementById(valorLocal[i].id)
@@ -43,7 +42,7 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
           valorLocal.splice(i, 1);
           var array = valorLocal
           localStorage.setItem("lista", JSON.stringify(array))
-          if (valorLocal.length ==0){
+          if (valorLocal.length == 0) {
             localStorage.removeItem("datosLista");
             console.log("hola")
           }
@@ -53,7 +52,7 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
       }
     })
   }
-  
+  // Agrego elementos al array if no coinciden los ID
   if (!listaId.includes(listaCompra.id)) {
     var array = valorLocal
     array.push(listaCompra)
