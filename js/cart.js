@@ -34,7 +34,6 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
   }
   // Eliminar productos
   for (var i = 0; i < valorLocal.length; i++) {
-    console.log(valorLocal.length)
     let hola = document.getElementById(valorLocal[i].id)
     hola.addEventListener("click", event => {
       for (var i = 0; i < valorLocal.length; i++) {
@@ -44,10 +43,8 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
           localStorage.setItem("lista", JSON.stringify(array))
           if (valorLocal.length == 0) {
             localStorage.removeItem("datosLista");
-            console.log("hola")
           }
           location.reload()
-          console.log(valorLocal.length)
         }
       }
     })
