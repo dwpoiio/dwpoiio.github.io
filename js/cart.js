@@ -10,31 +10,58 @@ let divMain = document.getElementById("main")
 let subTotalDiv = document.getElementById("subTotal")
 let cantidadDiv = document.getElementById("cantidad")
 
-// Recojo los datos de la compra guardados en el local storage
-// Parseados para poder utilizarlos
+// Creo una condicion que ejecute el codigo solo si compre algo
 if (JSON.parse(localStorage.getItem("datosLista"))) {
 
+  // Recojo los datos de la compra guardados en el local storage
+  // Parseados para poder utilizarlos
   listaCompra = JSON.parse(localStorage.getItem("datosLista"))
   let listaId = []
+  let valorLocal = JSON.parse(localStorage.getItem("lista"))
 
+  // Creo una variable en localStorage para guardar un array
   if (!localStorage.getItem("lista")) {
     localStorage.setItem("lista", JSON.stringify(listaCompra))
-    var array = [JSON.parse(localStorage.getItem("lista"))]
+    let valorLocal = JSON.parse(localStorage.getItem("lista"))
+    var array = [valorLocal]
     localStorage.setItem("lista", JSON.stringify(array))
+    location.reload()
   }
 
-  for (recorrer of JSON.parse(localStorage.getItem("lista"))) {
+
+  for (recorrer of valorLocal) {
     listaId.push(recorrer.id)
     crearCompra(recorrer)
   }
 
+  for (var i = 0; i < valorLocal.length; i++) {
+    console.log(valorLocal.length)
+    let hola = document.getElementById(valorLocal[i].id)
+    hola.addEventListener("click", event => {
+      for (var i = 0; i < valorLocal.length; i++) {
+        if (valorLocal[i].id == hola.id) {
+          valorLocal.splice(i, 1);
+          var array = valorLocal
+          localStorage.setItem("lista", JSON.stringify(array))
+          if (valorLocal.length ==0){
+            localStorage.removeItem("datosLista");
+            console.log("hola")
+          }
+          location.reload()
+          console.log(valorLocal.length)
+        }
+      }
+    })
+  }
+  
   if (!listaId.includes(listaCompra.id)) {
-    var array = JSON.parse(localStorage.getItem("lista"))
+    var array = valorLocal
     array.push(listaCompra)
     localStorage.setItem("lista", JSON.stringify(array))
     location.reload()
   }
 }
+
 
 function crearCompra(variable) {
   let divPrincipal = document.createElement("div")
@@ -65,6 +92,15 @@ function crearCompra(variable) {
   //Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
   subTotalDivCompra.className += "col fw-bold"
+  // boton para eliminar producto
+  let divEliminar = document.createElement("div")
+  let btnEliminar = document.createElement("button")
+  btnEliminar.className += "btn btn-danger btn-small"
+  btnEliminar.setAttribute('type', 'submit');
+  btnEliminar.setAttribute('id', variable.id);
+  btnEliminar.innerHTML = `Eliminar`
+  divEliminar.appendChild(btnEliminar)
+  divEliminar.className += "col"
 
   function subTotalC() {
     // El temporizador realiza el subtotalDivCompra.innerHTML cada 0.1 segundos
@@ -80,6 +116,7 @@ function crearCompra(variable) {
   divPrincipal.appendChild(costDiv)
   divPrincipal.appendChild(inputDiv)
   divPrincipal.appendChild(subTotalDivCompra)
+  divPrincipal.appendChild(divEliminar)
   divMain.appendChild(hr)
 }
 
