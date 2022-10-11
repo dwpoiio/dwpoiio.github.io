@@ -61,7 +61,6 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
   }
 }
 
-
 function crearCompra(variable) {
   let divPrincipal = document.createElement("div")
   divPrincipal.className += "row"
