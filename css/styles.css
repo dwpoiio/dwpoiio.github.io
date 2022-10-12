@@ -30,11 +30,12 @@ nav a {
 
 .jumbotron {
   height: 50vh;
-  padding: 5em inherit;
+  padding: 1vh inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
-  background-size: cover;
+  background-size: contain;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   color: black;
@@ -59,9 +60,12 @@ nav a {
   opacity: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .jumbotron1 {
     height: 25vh;
+  }
+  .jumbotron {
+    height: 40vh;
   }
 }
 
