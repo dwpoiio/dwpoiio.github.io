@@ -67,31 +67,31 @@ function crearCompra(variable) {
   hr.className += "mt-2"
   //Agrego la imagen
   let imgDiv = document.createElement("div")
-  imgDiv.innerHTML = `<img src="${variable.images[0]}" width="100" alt="imgVenta">`
-  imgDiv.className += "col"
+  imgDiv.innerHTML = `<img src="${variable.images[0]}" width="100" alt="imgVenta" class="img-fluid">`
+  imgDiv.className += "col-4 col-md-2 mb-1"
   //Agrego div del name
   let nameDiv = document.createElement("div")
   nameDiv.innerHTML = variable.name
-  nameDiv.className += "col"
+  nameDiv.className += "col-4 col-md-2 mb-1"
   //Agrego el div del costo por unidad
   let costDiv = document.createElement("div")
   costDiv.innerHTML = `USD ${variable.cost}`
-  costDiv.className += "col"
+  costDiv.className += "col-4 col-md-2 mb-1"
   //Agrego el input
   let inputDiv = document.createElement("div")
   let inputInterior = document.createElement("input")
   inputInterior.setAttribute('type', 'number');
   inputInterior.setAttribute('min', '0');
   inputInterior.setAttribute('value', '1');
+  inputInterior.className += "form-control"
   inputInterior.addEventListener("input", event => {
     subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
   })
-  // inputInterior.setAttribute('id', 'inputInterior');
   inputDiv.appendChild(inputInterior)
-  inputDiv.className += "col"
+  inputDiv.className += "col-4 col-md-2 mb-1"
   //Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
-  subTotalDivCompra.className += "col fw-bold"
+  subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold"
   subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
   // boton para eliminar producto
   let divEliminar = document.createElement("div")
@@ -101,7 +101,7 @@ function crearCompra(variable) {
   btnEliminar.setAttribute('id', variable.id);
   btnEliminar.innerHTML = `Eliminar`
   divEliminar.appendChild(btnEliminar)
-  divEliminar.className += "col"
+  divEliminar.className += "col-4 col-md-2 mb-1"
 
   divMain.appendChild(divPrincipal)
   divPrincipal.appendChild(imgDiv)
@@ -120,7 +120,7 @@ fetch(CART_INFO_URL + 25801 + EXT_TYPE)
     let contenido = document.createElement("div")
     document.getElementById("name").innerHTML = datos.articles[0].name
     document.getElementById("unitCost").innerHTML = `USD ${datos.articles[0].unitCost}`
-    document.getElementById("image").innerHTML = `<img src="${datos.articles[0].image}" width="100" alt="imgVenta">`
+    document.getElementById("image").innerHTML = `<img src="${datos.articles[0].image}" width="100" alt="imgVenta" class="img-fluid">`
 
     subTotalDiv.innerHTML = `USD ${datos.articles[0].unitCost * cantidadDiv.value}`
 
