@@ -43,13 +43,15 @@ nav a {
 
 .jumbotron1 {
   height: 50vh;
-  background-color: #f8f9fa;
+  padding: 1vh inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
   background: url('../img/login.png');
-  background-repeat: no-repeat;
+  background-size: 100% 100%;
   background-position: center;
-  background-size: contain;
-  margin-bottom: 2vh;
-  margin-top: 0;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
 }
 
 .show{
@@ -59,11 +61,6 @@ nav a {
   opacity: 0;
 }
 
-@media (max-width: 767px) {
-  .jumbotron1 {
-    height: 25vh;
-  }
-}
 
 @media (max-width: 768px) {
   .col-3 {
