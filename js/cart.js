@@ -83,11 +83,16 @@ function crearCompra(variable) {
   inputInterior.setAttribute('type', 'number');
   inputInterior.setAttribute('min', '0');
   inputInterior.setAttribute('value', '1');
+  inputInterior.addEventListener("input", event => {
+    subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
+  })
+  // inputInterior.setAttribute('id', 'inputInterior');
   inputDiv.appendChild(inputInterior)
   inputDiv.className += "col"
   //Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
   subTotalDivCompra.className += "col fw-bold"
+  subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
   // boton para eliminar producto
   let divEliminar = document.createElement("div")
   let btnEliminar = document.createElement("button")
@@ -97,14 +102,6 @@ function crearCompra(variable) {
   btnEliminar.innerHTML = `Eliminar`
   divEliminar.appendChild(btnEliminar)
   divEliminar.className += "col"
-
-  function subTotalC() {
-    // El temporizador realiza el subtotalDivCompra.innerHTML cada 0.1 segundos
-    setInterval(function () {
-      subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
-    }, 100);
-  }
-  subTotalC()
 
   divMain.appendChild(divPrincipal)
   divPrincipal.appendChild(imgDiv)
@@ -125,13 +122,11 @@ fetch(CART_INFO_URL + 25801 + EXT_TYPE)
     document.getElementById("unitCost").innerHTML = `USD ${datos.articles[0].unitCost}`
     document.getElementById("image").innerHTML = `<img src="${datos.articles[0].image}" width="100" alt="imgVenta">`
 
-    function subTotalF() {
-      // El temporizador realiza el subtotalDiv.innerHTML cada 0.1 segundos
-      setInterval(function () {
-        subTotalDiv.innerHTML = `USD ${datos.articles[0].unitCost * cantidadDiv.value}`
-      }, 100);
-    }
-    subTotalF()
+    subTotalDiv.innerHTML = `USD ${datos.articles[0].unitCost * cantidadDiv.value}`
+
+    document.getElementById("cantidad").addEventListener("input", event => {
+      subTotalDiv.innerHTML = `USD ${datos.articles[0].unitCost * cantidadDiv.value}`
+    })
 
     divMain.appendChild(contenido)
   });
