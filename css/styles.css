@@ -64,9 +64,6 @@ nav a {
   .jumbotron1 {
     height: 25vh;
   }
-  .jumbotron {
-    height: 40vh;
-  }
 }
 
 @media (max-width: 768px) {
