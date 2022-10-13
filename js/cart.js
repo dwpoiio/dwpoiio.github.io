@@ -42,6 +42,9 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
           valorLocal.splice(i, 1);
           var array = valorLocal
           localStorage.setItem("lista", JSON.stringify(array))
+          if (array.length > 0) {
+            localStorage.setItem("datosLista", JSON.stringify(array[array.length - 1]))
+          }
           if (valorLocal.length == 0) {
             localStorage.removeItem("datosLista");
           }
