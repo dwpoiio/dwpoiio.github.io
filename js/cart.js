@@ -10,7 +10,7 @@ let divMain = document.getElementById("main")
 let subTotalDiv = document.getElementById("subTotal")
 let cantidadDiv = document.getElementById("cantidad")
 
-// Creo una condicion que ejecute el codigo solo si compre algo
+// Creo una condicion que ejecute el codigo solo si compra algo
 if (JSON.parse(localStorage.getItem("datosLista"))) {
 
   // Recojo los datos de la compra guardados en el local storage
@@ -20,6 +20,7 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
   let valorLocal = JSON.parse(localStorage.getItem("lista"))
 
   // Creo una variable en localStorage para guardar un array
+  // En caso de que no exista aun la lista
   if (!localStorage.getItem("lista")) {
     localStorage.setItem("lista", JSON.stringify(listaCompra))
     let valorLocal = JSON.parse(localStorage.getItem("lista"))
@@ -59,6 +60,7 @@ if (JSON.parse(localStorage.getItem("datosLista"))) {
   }
 }
 
+// Funcion para agregar elementos al dom
 function crearCompra(variable) {
   let divPrincipal = document.createElement("div")
   divPrincipal.className += "row"
