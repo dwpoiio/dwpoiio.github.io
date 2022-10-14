@@ -24,12 +24,14 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
   .then(datos => {
 
     divListaProductos.innerHTML += ` 
-        <div class="m-5">
-            <div class="row">
-            <h2 class="col">${datos.name}</h2>
-            <button class="btn btn-success btn-lg col-2" type="submit" id="compra">Comprar</button>
+        <div class="">
+            <div class="row my-2">
+            <h2 class="col-6">${datos.name}</h2>
+            <div class="col-4"></div>
+            <button class="btn btn-success col-2 text-center" type="submit" id="compra">Comprar</button>
+            <hr class="mt-2">
             </div>
-            <hr>
+            
                 <div class="col">
                     <p>
                     <b>Precio</b><br>
