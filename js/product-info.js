@@ -90,11 +90,21 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
     }
 
     document.getElementById("compra").addEventListener("click", event => {
-      localStorage.setItem("datosLista",JSON.stringify(datos))
-      
-      location.href = "cart.html"
+      let listaId = []
+      let array = JSON.parse(localStorage.getItem("productInit"))
+      for (recorrer of array) {
+        listaId.push(recorrer.id)
+      }
+      array.push(datos)
+      if (!listaId.includes(datos.id)) {
+        localStorage.setItem("productInit", JSON.stringify(array))
+        location.href = "cart.html"
+      } else {
+        location.href = "cart.html"
+      }
     })
   });
+
 //llamo a la api de los comentarios
 fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
   .then(res => res.json())

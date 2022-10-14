@@ -74,3 +74,13 @@ document.getElementById("navegador").innerHTML += `<nav class="navbar navbar-exp
   </div>
 </div>
 </nav>`;
+
+if (!JSON.parse(localStorage.getItem("productInit"))) {
+  fetch(CART_INFO_URL + 25801 + EXT_TYPE)
+    .then(results => results.json())
+    .then(datos => {
+      localStorage.setItem("productInit", JSON.stringify(datos.articles[0]))
+      let array = [JSON.parse(localStorage.getItem("productInit"))]
+      localStorage.setItem("productInit", JSON.stringify(array))
+    })
+}
