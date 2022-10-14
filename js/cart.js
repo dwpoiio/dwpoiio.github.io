@@ -14,7 +14,7 @@ let listaid = []
 for (recorrer of datos) {
   // Coloco en pantalla los elementos
   crearCompra(recorrer)
-  //eliminar productos de la lista
+  // Eliminar productos de la lista
   listaid.push(recorrer.id)
   let hola = document.getElementById(recorrer.id)
   hola.addEventListener("click", event => {
@@ -32,7 +32,7 @@ for (recorrer of datos) {
 
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
-  //excepciones para el Peugot
+  // Excepciones para el Peugot
   if (variable.id == 50924) {
     variable.cost = 15200
     variable.image = variable.images
@@ -42,22 +42,22 @@ function crearCompra(variable) {
   }
   let divPrincipal = document.createElement("div")
   divPrincipal.className += "row"
-  // creo un hr
+  // Creo un hr
   let hr = document.createElement("hr")
   hr.className += "mt-2"
-  //Agrego la imagen
+  // Agrego la imagen
   let imgDiv = document.createElement("div")
   imgDiv.innerHTML = `<img src="${varImg}" width="100" alt="imgVenta" class="img-fluid">`
   imgDiv.className += "col-4 col-md-2 mb-1"
-  //Agrego div del name
+  // Agrego div del name
   let nameDiv = document.createElement("div")
   nameDiv.innerHTML = variable.name
   nameDiv.className += "col-4 col-md-2 mb-1"
-  //Agrego el div del costo por unidad
+  // Agrego el div del costo por unidad
   let costDiv = document.createElement("div")
   costDiv.innerHTML = `USD ${variable.cost}`
   costDiv.className += "col-4 col-md-2 mb-1"
-  //Agrego el input
+  // Agrego el input
   let inputDiv = document.createElement("div")
   let inputInterior = document.createElement("input")
   inputInterior.setAttribute('type', 'number');
@@ -70,11 +70,11 @@ function crearCompra(variable) {
   })
   inputDiv.appendChild(inputInterior)
   inputDiv.className += "col-4 col-md-2 mb-1"
-  //Agrego el subTotalCompra
+  // Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
   subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold"
   subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
-  // boton para eliminar producto
+  // Boton para eliminar producto
   let divEliminar = document.createElement("div")
   let btnEliminar = document.createElement("button")
   btnEliminar.className += "btn btn-danger btn-small"
@@ -83,7 +83,7 @@ function crearCompra(variable) {
   btnEliminar.innerHTML = `Eliminar`
   divEliminar.appendChild(btnEliminar)
   divEliminar.className += "col-4 col-md-2 mb-1"
-
+  // Appendicheo todos los elementos
   divMain.appendChild(divPrincipal)
   divPrincipal.appendChild(imgDiv)
   divPrincipal.appendChild(nameDiv)
