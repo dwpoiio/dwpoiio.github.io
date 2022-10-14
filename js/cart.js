@@ -36,9 +36,9 @@ function crearCompra(variable) {
   if (variable.id == 50924) {
     variable.cost = 15200
     variable.image = variable.images
-    hola = "img/prod50924_1.jpg"
+    varImg = "img/prod50924_1.jpg"
   } else {
-    hola = variable.images[0]
+    varImg = variable.images[0]
   }
   let divPrincipal = document.createElement("div")
   divPrincipal.className += "row"
@@ -47,7 +47,7 @@ function crearCompra(variable) {
   hr.className += "mt-2"
   //Agrego la imagen
   let imgDiv = document.createElement("div")
-  imgDiv.innerHTML = `<img src="${hola}" width="100" alt="imgVenta" class="img-fluid">`
+  imgDiv.innerHTML = `<img src="${varImg}" width="100" alt="imgVenta" class="img-fluid">`
   imgDiv.className += "col-4 col-md-2 mb-1"
   //Agrego div del name
   let nameDiv = document.createElement("div")
