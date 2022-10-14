@@ -29,12 +29,12 @@ for (recorrer of datos) {
     }
   })
 }
-
+console.log(datos)
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
   // Excepciones para el Peugot
   if (variable.id == 50924) {
-    variable.cost = 15200
+    variable.cost = variable.unitCost
     variable.image = variable.images
     varImg = "img/prod50924_1.jpg"
   } else {
