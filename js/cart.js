@@ -64,6 +64,7 @@ function crearCompra(variable) {
   inputInterior.setAttribute('min', '0');
   inputInterior.setAttribute('value', '1');
   inputInterior.className += "form-control"
+  // Subtotal actualizado en tiempo real
   inputInterior.addEventListener("input", event => {
     subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
   })
