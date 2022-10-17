@@ -29,7 +29,7 @@ for (recorrer of datos) {
     }
   })
 }
-console.log(datos)
+
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
   // Excepciones para el Peugot
@@ -93,3 +93,5 @@ function crearCompra(variable) {
   divPrincipal.appendChild(divEliminar)
   divMain.appendChild(hr)
 }
+
+document.getElementById("sumaSubTotal").innerHTML = `tengo que modificar esto`

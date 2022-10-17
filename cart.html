@@ -14,61 +14,87 @@
 
 <body>
   <!-- Navegador -->
-  <div id="navegador"></div>
+  <div id="navegador">
+
+  </div>
+  <!-- Main div -->
   <main>
     <div class="container">
+      <h2 class="mt-4 text-center">Carrito de compras</h2><br>
+      <div id="main">
+        <h4>Articulos a comprar</h4>
+        <div class="row">
+          <div class="col-4 col-md-2 mb-1"></div>
+          <div class="col-4 col-md-2 mb-1 fw-bold">Nombre</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold">Costo</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold">Cantidad</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold">Subtotal</div>
+          <div class="col-4 col-md-2 mb-1"></div>
+        </div>
+        <hr size="5" style="opacity:1;">
+      </div>
+      <!-- Tipo de envio -->
       <div>
-        <div>
-          <h2>Carrito de compras</h2><br>
-          <h4>Articulos a comprar</h4>
-          <div id="main" class="row">
-            <div class="row">
-              <div class="col-4 col-md-2 mb-1"></div>
-              <div class="col-4 col-md-2 mb-1 fw-bold">Nombre</div>
-              <div class="col-4 col-md-2 mb-1 fw-bold">Costo</div>
-              <div class="col-4 col-md-2 mb-1 fw-bold">Cantidad</div>
-              <div class="col-4 col-md-2 mb-1 fw-bold">Subtotal</div>
-              <div class="col-4 col-md-2 mb-1"></div>
-            </div>
-            <hr size="5" style="opacity:1;">
+        <h4 class="mb-3">Tipo de envio</h4>
+        <div class="mb-3">
+          <div class="custom-control custom-radio">
+            <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
+              required="">
+            <label class="custom-control-label" for="goldradio">Premium 2 a 5 dias (15%)</label>
           </div>
-          <div class="row">
-            <h4 class="mb-3">Tipo de envio</h4>
-            <div class="mb-3">
-              <div class="custom-control custom-radio">
-                <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
-                  required="">
-                <label class="custom-control-label" for="goldradio">Premium 2 a 5 dias (15%)</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="premiumradio">Express 5 a 8 dias (7%)</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="standardradio">stándard 12 a 15 dias (5%)</label>
-              </div>
-            </div>
-            <h4 class="mb-3">Direccion de envio</h4>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="productName">Calle</label>
-                <input type="text" class="form-control" id="productName" value="" name="productName">
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="productName">Numero</label>
-                <input type="text" class="form-control" id="productName" value="" name="productName">
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="productName">Esquina</label>
-                <input type="text" class="form-control" id="productName" value="" name="productName">
-              </div>
-            </div>
-            <hr>
+          <div class="custom-control custom-radio">
+            <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="premiumradio">Express 5 a 8 dias (7%)</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="standardradio">stándard 12 a 15 dias (5%)</label>
+          </div>
+        </div>
+        <!-- Dirección de envio -->
+        <div class="row">
+          <h4 class="mb-3">Direccion de envio</h4>
+          <div class="col-md-6 mb-3">
+            <label for="productName">Calle</label>
+            <input type="text" class="form-control" id="productName" value="" name="productName">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="productName">Numero</label>
+            <input type="text" class="form-control" id="productName" value="" name="productName">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="productName">Esquina</label>
+            <input type="text" class="form-control" id="productName" value="" name="productName">
           </div>
         </div>
       </div>
-
+      <hr>
+      <!-- Costos -->
+      <div class="mb-4">
+        <h4>Costos</h4>
+        <div class="border rounded-top">
+          <div class="row m-1">
+            <div class="col-4">Subtotal<br>Costo unitario del producto por cantidad</div>
+            <div class="col-4"></div>
+            <div class="col-4 text-end" id="sumaSubTotal"></div>
+          </div>
+        </div>
+        <div class="border">
+          <div class="row m-1">
+            <div class="col-4">Costo de envio<br>Segun el tipo de envio</div>
+            <div class="col-4"></div>
+            <div class="col-4 text-end">USD 456</div>
+          </div>
+        </div>
+        <div class="border rounded-bottom">
+          <div class="row m-1">
+            <div class="col-4">Total</div>
+            <div class="col-4"></div>
+            <div class="col-4 text-end"><b>USD 1456</b></div>
+          </div>
+        </div>
+      </div>
+      <hr>
     </div>
   </main>
   <!-- Footer -->
@@ -82,14 +108,7 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
