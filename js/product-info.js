@@ -97,6 +97,10 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
       for (recorrer of array) {
         listaId.push(recorrer.id)
       }
+      Object.assign(datos, {
+        count: 1,
+        subTotal: datos.cost
+      })
       array.push(datos)
       if (!listaId.includes(datos.id)) {
         localStorage.setItem("productInit", JSON.stringify(array))

@@ -10,25 +10,44 @@ let cantidadDiv = document.getElementById("cantidad")
 
 let datos = JSON.parse(localStorage.getItem("productInit"))
 let listaid = []
+let sumaTotal = 0
 
-for (recorrer of datos) {
+
+for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
-  crearCompra(recorrer)
-  // Eliminar productos de la lista
-  listaid.push(recorrer.id)
-  let hola = document.getElementById(recorrer.id)
+  crearCompra(datos[i])
+  // Borro los elementos a excepcion del Peugot
+  let hola = document.getElementById(datos[i].id)
   hola.addEventListener("click", event => {
-    for (let i = 0; i < datos.length; i++) {
-      if (datos[i].id != 50924) {
-        if (datos[i].id == hola.id) {
-          datos.splice(i, 1)
-          localStorage.setItem("productInit", JSON.stringify(datos))
-          location.reload()
-        }
+    if (datos[i].id != 50924) {
+      if (datos[i].id == hola.id) {
+        datos.splice(i, 1)
+        localStorage.setItem("productInit", JSON.stringify(datos))
+        location.reload()
       }
     }
   })
+  //  Subtotal
+  sumaTotal += datos[i].subTotal
+  document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal}`
+  let costoEnvio = sumaTotal * 0.15
+  document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
+  document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal}`
+
+  document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
+    document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal}`
+    let costoEnvio = sumaTotal * 0.15
+    document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
+    document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal}`
+    // location.reload()
+  })
 }
+
+for (let i = 0; i < datos.length; i++) {
+
+
+}
+
 
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
@@ -59,21 +78,25 @@ function crearCompra(variable) {
   costDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el input
   let inputDiv = document.createElement("div")
-  let inputInterior = document.createElement("input")
+  var inputInterior = document.createElement("input")
   inputInterior.setAttribute('type', 'number');
   inputInterior.setAttribute('min', '0');
-  inputInterior.setAttribute('value', '1');
-  inputInterior.className += "form-control"
+  inputInterior.setAttribute('value', variable.count);
+  inputInterior.className += "form-control inputInterior"
   // Subtotal actualizado en tiempo real
   inputInterior.addEventListener("input", event => {
-    subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
+    variable.count = inputInterior.value
+    let elSubTotal = variable.cost * variable.count
+    subTotalDivCompra.innerHTML = `${variable.currency} ${elSubTotal}<br>`
+    variable.subTotal = elSubTotal
+    localStorage.setItem("productInit", JSON.stringify(datos))
   })
   inputDiv.appendChild(inputInterior)
   inputDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
   subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold"
-  subTotalDivCompra.innerHTML = `USD ${variable.cost * inputInterior.value}<br>`
+  subTotalDivCompra.innerHTML = `USD ${variable.cost * variable.count}<br>`
   // Boton para eliminar producto
   let divEliminar = document.createElement("div")
   let btnEliminar = document.createElement("button")
@@ -93,5 +116,3 @@ function crearCompra(variable) {
   divPrincipal.appendChild(divEliminar)
   divMain.appendChild(hr)
 }
-
-document.getElementById("sumaSubTotal").innerHTML = `tengo que modificar esto`
