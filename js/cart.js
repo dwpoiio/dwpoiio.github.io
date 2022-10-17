@@ -27,22 +27,30 @@ for (let i = 0; i < datos.length; i++) {
     }
   })
   //  Subtotal
-  sumaSubTotal += datos[i].subTotal
-  document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaSubTotal}`
+  if (datos[i].currency === "UYU") {
+    sumaSubTotal += (datos[i].subTotal / 40)
+  } else {
+    sumaSubTotal += datos[i].subTotal
+  }
+  document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaSubTotal.toFixed(2)}`
   let costoEnvio = sumaSubTotal * 0.15
-  document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
-  document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaSubTotal}`
+  document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio.toFixed(2)}`
+  document.getElementById("total").innerHTML = `<b>USD ${(costoEnvio + sumaSubTotal).toFixed(2)}</b>`
 
   document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
-    let sumaTotal1 = 0
+    let sumaTotal = 0
     for (let i = 0; i < JSON.parse(localStorage.getItem("productInit")).length; i++) {
       let datos1 = JSON.parse(localStorage.getItem("productInit"))
-      sumaTotal1 += datos1[i].subTotal
+      if (datos[i].currency === "UYU") {
+        sumaTotal += (datos1[i].subTotal / 40)
+      } else {
+        sumaTotal += datos1[i].subTotal
+      }
     }
-    document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal1}`
-    let costoEnvio = sumaTotal1 * 0.15
-    document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
-    document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal1}`
+    document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal.toFixed(2)}`
+    let costoEnvio = sumaTotal * 0.15
+    document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio.toFixed(2)}`
+    document.getElementById("total").innerHTML = `<b>USD ${(costoEnvio + sumaTotal).toFixed(2)}</b>`
     // location.reload()
   })
 
@@ -72,7 +80,7 @@ function crearCompra(variable) {
   nameDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el div del costo por unidad
   let costDiv = document.createElement("div")
-  costDiv.innerHTML = `USD ${variable.cost}`
+  costDiv.innerHTML = `${variable.currency} ${variable.cost}`
   costDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el input
   let inputDiv = document.createElement("div")
@@ -94,7 +102,7 @@ function crearCompra(variable) {
   // Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
   subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold"
-  subTotalDivCompra.innerHTML = `USD ${variable.cost * variable.count}<br>`
+  subTotalDivCompra.innerHTML = `${variable.currency} ${variable.cost * variable.count}<br>`
   // Boton para eliminar producto
   let divEliminar = document.createElement("div")
   let btnEliminar = document.createElement("button")
