@@ -26,17 +26,21 @@ for (let i = 0; i < datos.length; i++) {
       }
     }
   })
-  //  Subtotal
+  // Subtotal
+  // Pasar datos a Dolares si es necesario
   if (datos[i].currency === "UYU") {
     sumaSubTotal += (datos[i].subTotal / 40)
   } else {
     sumaSubTotal += datos[i].subTotal
   }
+  // Imprimo en el elemento los valores de la sumaSubTotal
   document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaSubTotal.toFixed(2)}`
+  // Creo variable costo de envio
   let costoEnvio = sumaSubTotal * 0.15
   document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio.toFixed(2)}`
+  // Sumo costo de envio mas subTotal
   document.getElementById("total").innerHTML = `<b>USD ${(costoEnvio + sumaSubTotal).toFixed(2)}</b>`
-
+  // Actualizar cada vez que ocurre un cambio en el input
   document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
     let sumaTotal = 0
     for (let i = 0; i < JSON.parse(localStorage.getItem("productInit")).length; i++) {
@@ -51,7 +55,6 @@ for (let i = 0; i < datos.length; i++) {
     let costoEnvio = sumaTotal * 0.15
     document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio.toFixed(2)}`
     document.getElementById("total").innerHTML = `<b>USD ${(costoEnvio + sumaTotal).toFixed(2)}</b>`
-    // location.reload()
   })
 
 }
