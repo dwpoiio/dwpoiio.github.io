@@ -12,7 +12,6 @@ let datos = JSON.parse(localStorage.getItem("productInit"))
 let listaid = []
 let sumaTotal = 0
 
-
 for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
   crearCompra(datos[i])
@@ -42,12 +41,6 @@ for (let i = 0; i < datos.length; i++) {
     // location.reload()
   })
 }
-
-for (let i = 0; i < datos.length; i++) {
-
-
-}
-
 
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
