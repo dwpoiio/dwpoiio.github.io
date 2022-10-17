@@ -10,7 +10,7 @@ let cantidadDiv = document.getElementById("cantidad")
 
 let datos = JSON.parse(localStorage.getItem("productInit"))
 let listaid = []
-let sumaTotal = 0
+let sumaSubTotal = 0
 
 for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
@@ -27,21 +27,26 @@ for (let i = 0; i < datos.length; i++) {
     }
   })
   //  Subtotal
-  sumaTotal += datos[i].subTotal
-  document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal}`
-  let costoEnvio = sumaTotal * 0.15
+  sumaSubTotal += datos[i].subTotal
+  document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaSubTotal}`
+  let costoEnvio = sumaSubTotal * 0.15
   document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
-  document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal}`
+  document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaSubTotal}`
 
   document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
-    document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal}`
-    let costoEnvio = sumaTotal * 0.15
+    let sumaTotal1 = 0
+    for (let i = 0; i < JSON.parse(localStorage.getItem("productInit")).length; i++) {
+      let datos1 = JSON.parse(localStorage.getItem("productInit"))
+      sumaTotal1 += datos1[i].subTotal
+    }
+    document.getElementById("sumaSubTotal").innerHTML = `USD ${sumaTotal1}`
+    let costoEnvio = sumaTotal1 * 0.15
     document.getElementById("costoEnvio").innerHTML = `USD ${costoEnvio}`
-    document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal}`
+    document.getElementById("total").innerHTML = `USD ${costoEnvio + sumaTotal1}`
     // location.reload()
   })
-}
 
+}
 // Funcion para agregar elementos al dom
 function crearCompra(variable) {
   // Excepciones para el Peugot
