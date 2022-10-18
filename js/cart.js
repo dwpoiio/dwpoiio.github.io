@@ -12,8 +12,10 @@ let datos = JSON.parse(localStorage.getItem("productInit"))
 let listaid = []
 let sumaSubTotal = 0
 
+
 for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
+  console.log(datos[i])
   crearCompra(datos[i])
   // Borro los elementos a excepcion del Peugot
   let hola = document.getElementById(datos[i].id)

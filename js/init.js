@@ -81,6 +81,9 @@ if (!JSON.parse(localStorage.getItem("productInit"))) {
     .then(datos => {
       localStorage.setItem("productInit", JSON.stringify(datos.articles[0]))
       let array = [JSON.parse(localStorage.getItem("productInit"))]
+      Object.assign(array[0], {
+        subTotal: array[0].unitCost
+      })
       localStorage.setItem("productInit", JSON.stringify(array))
     })
 }
