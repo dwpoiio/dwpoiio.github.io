@@ -12,11 +12,9 @@ let EnvioPremium = document.getElementById("premiumradio")
 let EnvioStandard = document.getElementById("standardradio")
 
 let datos = JSON.parse(localStorage.getItem("productInit"))
-let listaid = []
+// let listaid = []
 let sumaSubTotal = 0
 let tipoEnvio = 15
-
-
 
 for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
