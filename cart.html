@@ -15,7 +15,6 @@
 <body>
   <!-- Navegador -->
   <div id="navegador">
-
   </div>
   <!-- Main div -->
   <main>
@@ -25,11 +24,11 @@
         <h4>Articulos a comprar</h4>
         <div class="row">
           <div class="col-4 col-md-2 mb-1"></div>
-          <div class="col-4 col-md-2 mb-1 fw-bold">Nombre</div>
-          <div class="col-4 col-md-2 mb-1 fw-bold">Costo</div>
-          <div class="col-4 col-md-2 mb-1 fw-bold">Cantidad</div>
-          <div class="col-4 col-md-2 mb-1 fw-bold">Subtotal</div>
-          <div class="col-4 col-md-2 mb-1"></div>
+          <div class="col-4 col-md-2 mb-1 fw-bold text-center">Nombre</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold text-center">Costo</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold text-center">Cantidad</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold text-center">Subtotal</div>
+          <div class="col-4 col-md-2 mb-1 fw-bold text-center">Eliminar</div>
         </div>
         <hr size="5" style="opacity:1;">
       </div>
@@ -43,11 +42,13 @@
             <label class="custom-control-label" for="goldradio">Premium 2 a 5 dias (15%)</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="" value="7">
+            <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required=""
+              value="7">
             <label class="custom-control-label" for="premiumradio">Express 5 a 8 dias (7%)</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="" value="5">
+            <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required=""
+              value="5">
             <label class="custom-control-label" for="standardradio">stándard 12 a 15 dias (5%)</label>
           </div>
         </div>
@@ -67,6 +68,8 @@
             <input type="text" class="form-control" id="productName" value="" name="productName">
           </div>
         </div>
+        <!-- Forma de pago -->
+
       </div>
       <hr>
       <!-- Costos -->
@@ -95,6 +98,75 @@
         </div>
       </div>
       <hr>
+      <!-- Forma de pago -->
+      <div class="row">
+        <h4>Forma de pago</h4>
+        <!-- Boton Activador modal -->
+        <div>No has seleccionado
+          <!-- <a type="button" class="stretched-link" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">Seleccionar</a> -->
+          <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            style="color: blue; text-decoration: underline; color: #0d6efd;">
+            Seleccionar
+          </a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="custom-control custom-radio">
+                  <input id="tarjetaCredito" name="medioPago" type="radio" class="custom-control-input" required=""
+                    value="">
+                  <label class="custom-control-label" for="tarjetaCredito">Tarjeta de credito</label>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="numeroTarjeta">Número de tarjeta</label>
+                    <input type="number" class="form-control" id="numeroTarjeta" value="" name="numeroTarjeta">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="numeroSeg">Codigo de seg.</label>
+                    <input type="number" class="form-control" id="numeroSeg" value="" name="numeroSeg">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="vencimiento">Vencimiento (MM/AA)</label>
+                    <input type="text" class="form-control" id="vencimiento" value="" name="vencimiento">
+                  </div>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="transferencia" name="medioPago" type="radio" class="custom-control-input" required=""
+                    value="">
+                  <label class="custom-control-label" for="transferencia">Transferencia bancaria</label>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="numeroCuenta">Número de cuenta</label>
+                    <input type="number" class="form-control" id="numeroCuenta" value="" name="numeroCuenta">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Boton finalizar compra -->
+        <div>
+          <div class="d-grid gap-2 mt-5">
+            <button class="btn btn-lg bg-dark text-light" type="button">Finalizar compra</button>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <!-- Footer -->

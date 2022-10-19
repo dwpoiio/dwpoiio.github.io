@@ -1,21 +1,24 @@
 // Tomo la informaciond e inicio de sesion
 // Y las guardo en variables
 let nombre_usuario = localStorage.getItem('usuario')
-// escribo en el nav el nombre de usuario
+// Escribo en el nav el nombre de usuario
 document.getElementById("nav-usuario").innerHTML = nombre_usuario;
-
+// Tomo todos los elementos necesarios por el ID
 let divMain = document.getElementById("main")
 let subTotalDiv = document.getElementById("subTotal")
 let cantidadDiv = document.getElementById("cantidad")
-let EnvioGold = document.getElementById("goldradio")
-let EnvioPremium = document.getElementById("premiumradio")
-let EnvioStandard = document.getElementById("standardradio")
+let envioGold = document.getElementById("goldradio")
+let envioPremium = document.getElementById("premiumradio")
+let envioStandard = document.getElementById("standardradio")
+let vencimiento = document.getElementById("vencimiento")
+let numeroSeg = document.getElementById("numeroSeg")
+let numeroTarjeta = document.getElementById("numeroTarjeta")
+let numeroCuenta = document.getElementById("numeroCuenta")
 
 let datos = JSON.parse(localStorage.getItem("productInit"))
-// let listaid = []
 let sumaSubTotal = 0
 let tipoEnvio = 15
-
+// Recorro mediante un for el array datos
 for (let i = 0; i < datos.length; i++) {
   // Coloco en pantalla los elementos
   crearCompra(datos[i])
@@ -39,7 +42,6 @@ for (let i = 0; i < datos.length; i++) {
   }
   //Imprimir costos
   imprimirTipoEnvio(sumaSubTotal)
-
   // Actualizar cada vez que ocurre un cambio en el input
   document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
     let sumaTotal = 0
@@ -55,6 +57,20 @@ for (let i = 0; i < datos.length; i++) {
     imprimirTipoEnvio(sumaTotal)
   })
 }
+// Opcion pago con tarjeta de credito
+document.getElementById("tarjetaCredito").addEventListener("input", event => {
+  numeroCuenta.disabled = true
+  vencimiento.disabled = false
+  numeroSeg.disabled = false
+  numeroTarjeta.disabled = false
+})
+// Opcion pago con transferencia bancaria
+document.getElementById("transferencia").addEventListener("input", event => {
+  numeroCuenta.disabled = false
+  vencimiento.disabled = true
+  numeroSeg.disabled = true
+  numeroTarjeta.disabled = true
+})
 // Funcion para agregar elementos al dom
 function crearCompra(elementoArray) {
   // Excepciones para el Peugot
@@ -72,16 +88,16 @@ function crearCompra(elementoArray) {
   hr.className += "mt-2"
   // Agrego la imagen
   let imgDiv = document.createElement("div")
-  imgDiv.innerHTML = `<img src="${varImg}" width="100" alt="imgVenta" class="img-fluid">`
+  imgDiv.innerHTML = `<img src="${varImg}" width="100" alt="imgVenta" class="img-fluid mx-auto d-block">`
   imgDiv.className += "col-4 col-md-2 mb-1"
   // Agrego div del name
   let nameDiv = document.createElement("div")
   nameDiv.innerHTML = elementoArray.name
-  nameDiv.className += "col-4 col-md-2 mb-1"
+  nameDiv.className += "col-4 col-md-2 mb-1 text-center"
   // Agrego el div del costo por unidad
   let costDiv = document.createElement("div")
   costDiv.innerHTML = `${elementoArray.currency} ${elementoArray.cost}`
-  costDiv.className += "col-4 col-md-2 mb-1"
+  costDiv.className += "col-4 col-md-2 mb-1 text-center"
   // Agrego el input
   let inputDiv = document.createElement("div")
   var inputInterior = document.createElement("input")
@@ -101,15 +117,15 @@ function crearCompra(elementoArray) {
   inputDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")
-  subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold"
+  subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold text-center"
   subTotalDivCompra.innerHTML = `${elementoArray.currency} ${elementoArray.cost * elementoArray.count}<br>`
   // Boton para eliminar producto
   let divEliminar = document.createElement("div")
   let btnEliminar = document.createElement("button")
-  btnEliminar.className += "btn btn-danger btn-small"
+  btnEliminar.className += "btn btn-danger btn-small mx-auto d-block"
   btnEliminar.setAttribute('type', 'submit');
   btnEliminar.setAttribute('id', elementoArray.id);
-  btnEliminar.innerHTML = `Eliminar`
+  btnEliminar.innerHTML = `<i class="fas fa-trash mr-1"></i>`
   divEliminar.appendChild(btnEliminar)
   divEliminar.className += "col-4 col-md-2 mb-1"
   // Appendicheo todos los elementos
@@ -122,7 +138,7 @@ function crearCompra(elementoArray) {
   divPrincipal.appendChild(divEliminar)
   divMain.appendChild(hr)
 }
-
+// Funcion para imprimir SubTotal CostoEnvio y Total
 function imprimirTotales(importeSubTotal) {
   // Imprimo en el elemento los valores de la sumaSubTotal
   document.getElementById("sumaSubTotal").innerHTML = `USD ${importeSubTotal.toFixed(2)}`
@@ -133,18 +149,18 @@ function imprimirTotales(importeSubTotal) {
   document.getElementById("total").innerHTML = `<b>USD ${(costoEnvio + importeSubTotal).toFixed(2)}</b>`
   // Actualizar cada vez que ocurre un cambio en el input
 }
-
+// Funcion para variar porcentaje de tipo de envio
 function imprimirTipoEnvio(importe) {
-  EnvioGold.addEventListener("input", event => {
-    tipoEnvio = EnvioGold.value
+  envioGold.addEventListener("input", event => {
+    tipoEnvio = envioGold.value
     imprimirTotales(importe)
   })
-  EnvioPremium.addEventListener("input", event => {
-    tipoEnvio = EnvioPremium.value
+  envioPremium.addEventListener("input", event => {
+    tipoEnvio = envioPremium.value
     imprimirTotales(importe)
   })
-  EnvioStandard.addEventListener("input", event => {
-    tipoEnvio = EnvioStandard.value
+  envioStandard.addEventListener("input", event => {
+    tipoEnvio = envioStandard.value
     imprimirTotales(importe)
   })
   imprimirTotales(importe)
