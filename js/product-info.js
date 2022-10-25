@@ -22,7 +22,7 @@ function setProductID(id) {
 fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
   .then(res => res.json())
   .then(datos => {
-
+    console.log(categoria)
     divListaProductos.innerHTML += ` 
         <div class="">
             <div class="row my-2">
