@@ -62,7 +62,7 @@ for (let i = 0; i < datos.length; i++) {
 // Btn finalizar compra
 btnAlerta.addEventListener("click", event => {
   // If para imprimir aviso sobre "debe ingresar forma de pago"
-  if (numeroTarjeta.value.length < 12 && numeroCuenta.value.length == 0) {
+  if (((numeroTarjeta.value.length < 11) && (numeroCuenta.value.length < 2)) || !(!document.getElementById("tarjetaCredito").checked || !document.getElementById("transferencia").checked)) {
     metodoDePago.classList.add("is-invalid")
   } else {
     metodoDePago.classList.remove("is-invalid")
