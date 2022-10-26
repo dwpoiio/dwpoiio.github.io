@@ -65,9 +65,9 @@ document.getElementById("navegador").innerHTML += `<nav class="navbar navbar-exp
           aria-expanded="false"></a>
         <!-- Agrego las opciones del menu -->
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-          <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+          <li><a class="dropdown-item" href="cart.html">Mi carrito (${JSON.parse(localStorage.getItem("productInit")).length})</a></li>
           <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-          <li><a class="dropdown-item" href="login.html">Cerrar sesion</a></li>
+          <li><a class="dropdown-item" href="login.html" >Cerrar sesion</a></li>
         </ul>
       </li>
     </ul>
@@ -88,3 +88,5 @@ if (!JSON.parse(localStorage.getItem("productInit")) || (localStorage.getItem("p
       localStorage.setItem("productInit", JSON.stringify(array))
     })
 }
+
+console.log(JSON.parse(localStorage.getItem("productInit")).length)
