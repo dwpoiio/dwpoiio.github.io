@@ -10,6 +10,8 @@ let cantidadDiv = document.getElementById("cantidad");
 let envioGold = document.getElementById("goldradio");
 let envioPremium = document.getElementById("premiumradio");
 let envioStandard = document.getElementById("standardradio");
+let tarjetaCredito = document.getElementById("tarjetaCredito")
+let transferencia = document.getElementById("transferencia")
 let numeroSeg = document.getElementById("numeroSeg");
 let numeroTarjeta = document.getElementById("numeroTarjeta");
 let numeroCuenta = document.getElementById("numeroCuenta");
@@ -59,13 +61,44 @@ for (let i = 0; i < datos.length; i++) {
     imprimirTipoEnvio(sumaTotal)
   })
 };
+// Comprobaciones en timepo real para el pago con tarjeta
+numeroTarjeta.addEventListener("input", event => {
+  if (numeroTarjeta.value.length > 11 && numeroSeg.value.length > 2 && tarjetaCredito.checked) {
+    metodoDePago.classList.remove("is-invalid")
+    metodoDePago.classList.add("is-valid")
+  } else if (!(numeroTarjeta.value.length > 11 && numeroSeg.value.length > 2 && tarjetaCredito.checked)) {
+    metodoDePago.classList.add("is-invalid")
+    metodoDePago.classList.remove("is-valid")
+  }
+})
+numeroSeg.addEventListener("input", event => {
+  if (numeroTarjeta.value.length > 11 && numeroSeg.value.length > 2 && tarjetaCredito.checked) {
+    metodoDePago.classList.remove("is-invalid")
+    metodoDePago.classList.add("is-valid")
+  } else if (!(numeroTarjeta.value.length > 11 && numeroSeg.value.length > 2 && tarjetaCredito.checked)) {
+    metodoDePago.classList.add("is-invalid")
+    metodoDePago.classList.remove("is-valid")
+  }
+})
+// Comprobaciones en timepo real para el pago con transferencia
+numeroCuenta.addEventListener("input", event => {
+  if (numeroCuenta.value.length > 10 && transferencia.checked) {
+    metodoDePago.classList.remove("is-invalid")
+    metodoDePago.classList.add("is-valid")
+  } else if (!(numeroCuenta.value.length > 10 && transferencia.checked)) {
+    metodoDePago.classList.add("is-invalid")
+    metodoDePago.classList.remove("is-valid")
+  }
+})
 // Btn finalizar compra
 btnAlerta.addEventListener("click", event => {
   // If para imprimir aviso sobre "debe ingresar forma de pago"
-  if (((numeroTarjeta.value.length < 11) && (numeroCuenta.value.length < 2)) || !(!document.getElementById("tarjetaCredito").checked || !document.getElementById("transferencia").checked)) {
+  if (((numeroTarjeta.value.length <= 11) && (numeroSeg.value.length <= 2) && (numeroCuenta.value.length <= 10)) || !(!tarjetaCredito.checked || !transferencia.checked)) {
     metodoDePago.classList.add("is-invalid")
+    metodoDePago.classList.remove("is-valid")
   } else {
     metodoDePago.classList.remove("is-invalid")
+    metodoDePago.classList.add("is-valid")
   };
   // If para agregar alerta sobre carrito vacio
   if (datos.length == 0) {
@@ -103,6 +136,7 @@ document.getElementById("transferencia").addEventListener("input", event => {
   numeroTarjeta.disabled = true
   metodoDePago.innerHTML = `Transferencia bancaria`
 });
+// Funcion redirige y limpia localStorage
 function redirigir() {
   localStorage.removeItem('productInit');
   location.href = "index.html"
@@ -118,15 +152,15 @@ function crearCompra(elementoArray) {
   let imgDiv = document.createElement("div")
   imgDiv.innerHTML = `<img src="${elementoArray.images[0]}" width="100" alt="imgVenta" class="img-fluid mx-auto d-block">`
   imgDiv.className += "col-4 col-md-2 mb-1"
-  // Agrego div del name
+  // Agrego div del nombre
   let nameDiv = document.createElement("div")
   nameDiv.innerHTML = elementoArray.name
   nameDiv.className += "col-4 col-md-2 mb-1 text-center"
-  // Agrego el div del costo por unidad
+  // Agrego el div del Costo
   let costDiv = document.createElement("div")
   costDiv.innerHTML = `${elementoArray.currency} ${elementoArray.cost}`
   costDiv.className += "col-4 col-md-2 mb-1 text-center"
-  // Agrego el input
+  // Agrego el input cantidad
   let inputDiv = document.createElement("div")
   var inputInterior = document.createElement("input")
   inputInterior.setAttribute('type', 'number');
@@ -141,7 +175,16 @@ function crearCompra(elementoArray) {
     elementoArray.subTotal = elSubTotal
     localStorage.setItem("productInit", JSON.stringify(datos))
   });
+  // Agrego div con feedback valido e invalido
+  let divInvalid = document.createElement("div")
+  divInvalid.className += "invalid-feedback"
+  divInvalid.innerHTML = `Numero invalido de objetos`
+  let diValid = document.createElement("div")
+  diValid.className += "valid-feedback"
+  diValid.innerHTML = `Campo correcto`
   inputDiv.appendChild(inputInterior)
+  inputDiv.appendChild(diValid)
+  inputDiv.appendChild(divInvalid)
   inputDiv.className += "col-4 col-md-2 mb-1"
   // Agrego el subTotalCompra
   let subTotalDivCompra = document.createElement("div")

@@ -22,7 +22,6 @@ function setProductID(id) {
 fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
   .then(res => res.json())
   .then(datos => {
-    console.log(categoria)
     divListaProductos.innerHTML += ` 
         <div class="">
             <div class="row my-2">
@@ -81,7 +80,7 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
             </div>
         </div>`
 
-    for (recorrer of datos.relatedProducts) {
+    for (let recorrer of datos.relatedProducts) {
       divProductosRelacionados.innerHTML += `
             <div class="col-3 img-thumbnail m-3">
             <div onclick="setProductID(${recorrer.id})" class="list-group-item-action cursor-active">
@@ -94,18 +93,26 @@ fetch(PRODUCT_INFO_URL + categoria + EXT_TYPE)
     document.getElementById("compra").addEventListener("click", event => {
       let listaId = []
       let array = JSON.parse(localStorage.getItem("productInit"))
-      for (recorrer of array) {
+      for (let recorrer of array) {
         listaId.push(recorrer.id)
       }
       Object.assign(datos, {
         count: 1,
         subTotal: datos.cost
       })
-      array.push(datos)
+      // En caso de que el articulo no exista lo agrego la carrito
       if (!listaId.includes(datos.id)) {
+        array.push(datos)
         localStorage.setItem("productInit", JSON.stringify(array))
         location.href = "cart.html"
+        // En caso de ya contar con el articulo le sumo un producto a la cantidad
       } else {
+        for (let recorrer of array) {
+          if (recorrer.id == datos.id) {
+            recorrer.count++
+          }
+        }
+        localStorage.setItem("productInit", JSON.stringify(array))
         location.href = "cart.html"
       }
     })
@@ -135,7 +142,7 @@ fetch(PRODUCT_INFO_COMMENTS_URL + categoria + EXT_TYPE)
         // Completo las 5 estrellas negras
         if (comentarios.score < 5) {
           let repetir = 5 - comentarios.score;
-          for (i = 0; i < repetir; i++) {
+          for (let i = 0; i < repetir; i++) {
             let estrella1 = document.createElement('span');
             estrella1.classList.add("fa");
             estrella1.classList.add("fa-star");

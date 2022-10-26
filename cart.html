@@ -59,18 +59,24 @@
             <h4 class="mb-3">Direccion de envio</h4>
             <div class="col-md-6 mb-3">
               <label for="productStreet">Calle</label>
-              <input type="text" class="form-control" id="productStreet" value="" name="productStreet" required>
+              <input type="text" class="form-control" id="productStreet" value="" name="productStreet"
+                placeholder="18 de Julio" required>
               <div class="invalid-feedback">Es necesario poner una calle</div>
+              <div class="valid-feedback">Calle valida</div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="productNumber">Numero</label>
-              <input type="text" class="form-control" id="productNumber" value="" name="productNumber" required>
-              <div class="invalid-feedback">Es necesario poner una numero de puerta</div>
+              <input type="text" class="form-control" id="productNumber" value="" name="productNumber"
+                placeholder="1234" required>
+              <div class="invalid-feedback">Es necesario poner un numero de puerta</div>
+              <div class="valid-feedback">Numero de puerta valido</div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="productName">Esquina</label>
-              <input type="text" class="form-control" id="productName" value="" name="productName" required>
-              <div class="invalid-feedback">Es necesario poner la esquina de donde vive</div>
+              <input type="text" class="form-control" id="productName" value="" name="productName" placeholder="Ejido"
+                required>
+              <div class="invalid-feedback">Es necesario poner la esquina en donde vive</div>
+              <div class="valid-feedback">Esquina valida</div>
             </div>
           </div>
         </div>
@@ -111,6 +117,7 @@
               style="color: blue; text-decoration: underline; color: #0d6efd;" value="Seleccionar">Seleccionar
             </a>
             <div class="invalid-feedback">Debe seleccionar una forma de pago</div>
+            <div class="valid-feedback">Datos ingresados correctamente</div>
           </div>
           <!-- Modal -->
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -123,22 +130,27 @@
                 </div>
                 <div class="modal-body">
                   <div class="custom-control custom-radio">
-                    <input id="tarjetaCredito" name="medioPago" type="radio" class="custom-control-input" required=""
-                      value="">
+                    <input id="tarjetaCredito" name="medioPago" type="radio" class="custom-control-input"
+                      value="tarjetaCredito" required>
                     <label class="custom-control-label" for="tarjetaCredito">Tarjeta de credito</label>
+                    <div class="invalid-feedback">Debe seleccionar una forma de pago</div>
+                    <div class="valid-feedback">Dato ingresado correctamente</div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-md-6 mb-3">
                       <label for="numeroTarjeta">Número de tarjeta</label>
-                      <input type="number" class="form-control" min="999999999999" id="numeroTarjeta" name="numeroTarjeta"
-                        required>
+                      <input type="number" class="form-control" min="99999999999" id="numeroTarjeta"
+                        name="numeroTarjeta" placeholder="357987654321001" required>
                       <div class="invalid-feedback">Es necesario poner un numero de tarjeta valido</div>
+                      <div class="valid-feedback">Dato ingresado correctamente</div>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="numeroSeg">Codigo de seg.</label>
-                      <input type="number" class="form-control" id="numeroSeg" name="numeroSeg" min="99" required>
+                      <input type="number" class="form-control" id="numeroSeg" name="numeroSeg" min="99"
+                        placeholder="7997" required>
                       <div class="invalid-feedback">Es necesario poner un codigo de seguridad</div>
+                      <div class="valid-feedback">Dato ingresado correctamente</div>
                     </div>
                     <div class="col-md-6 mb-3">
                       <label for="vencimiento">Vencimiento (MM/AA)</label>
@@ -163,20 +175,27 @@
                         <option value="25"> 2025</option>
                         <option value="26"> 2026</option>
                         <option value="27"> 2027</option>
+                        <option value="28"> 2028</option>
                       </select>
+                      <div class="invalid-feedback">Tarjeta vencida</div>
+                      <div class="valid-feedback">Dato ingresado correctamente</div>
                     </div>
                   </div>
                   <div class="custom-control custom-radio">
-                    <input id="transferencia" name="medioPago" type="radio" class="custom-control-input" required=""
-                      value="">
+                    <input id="transferencia" name="medioPago" type="radio" class="custom-control-input"
+                      value="transferencia" required>
                     <label class="custom-control-label" for="transferencia">Transferencia bancaria</label>
+                    <div class="invalid-feedback">Debe seleccionar una forma de pago</div>
+                    <div class="valid-feedback">Dato ingresado correctamente</div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-md-6 mb-3">
                       <label for="numeroCuenta">Número de cuenta</label>
-                      <input type="number" class="form-control" id="numeroCuenta" value="" name="numeroCuenta" required>
+                      <input type="number" class="form-control" id="numeroCuenta" value="" name="numeroCuenta"
+                        min="9999999999" placeholder="70000202" required>
                       <div class="invalid-feedback">Es necesario poner una numero de Cuenta</div>
+                      <div class="valid-feedback">Dato ingresado correctamente</div>
                     </div>
                   </div>
                 </div>
