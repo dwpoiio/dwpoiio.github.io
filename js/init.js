@@ -41,6 +41,20 @@ let getJSONData = function (url) {
     });
 }
 
+if (!JSON.parse(localStorage.getItem("productInit")) || (localStorage.getItem("productInit") == '[]')) {
+  fetch(PRODUCT_INFO_URL + 50924 + EXT_TYPE)
+    .then(results => results.json())
+    .then(datos => {
+      localStorage.setItem("productInit", JSON.stringify(datos))
+      let array = [JSON.parse(localStorage.getItem("productInit"))]
+      Object.assign(array[0], {
+        count: 1,
+        subTotal: datos.cost
+      })
+      localStorage.setItem("productInit", JSON.stringify(array))
+    })
+}
+
 document.getElementById("navegador").innerHTML += `<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
 <div class="container">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -75,18 +89,4 @@ document.getElementById("navegador").innerHTML += `<nav class="navbar navbar-exp
 </div>
 </nav>`;
 
-if (!JSON.parse(localStorage.getItem("productInit")) || (localStorage.getItem("productInit") == '[]')) {
-  fetch(PRODUCT_INFO_URL + 50924 + EXT_TYPE)
-    .then(results => results.json())
-    .then(datos => {
-      localStorage.setItem("productInit", JSON.stringify(datos))
-      let array = [JSON.parse(localStorage.getItem("productInit"))]
-      Object.assign(array[0], {
-        count: 1,
-        subTotal: datos.cost
-      })
-      localStorage.setItem("productInit", JSON.stringify(array))
-    })
-}
 
-console.log(JSON.parse(localStorage.getItem("productInit")).length)
