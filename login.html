@@ -14,7 +14,6 @@
 <body>
     <!-- imagen de e-mercado -->
     <div class="jumbotron1"></div>
-
     <!-- formulario de ingreso a la pagina -->
     <div class="form-login">
         <h2>Inicio de sesion</h2>
@@ -24,7 +23,7 @@
         <input type="password" id="password"><br><br>
         <button class="form-login-submit" type="button" id="button" onclick="login()">Registrarme</button><br>
     </div>
-
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <!-- footer generico ya existente -->
     <footer class="text-muted">
         <div class="container">
@@ -41,8 +40,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
             onclick="cerrarDiv()"></button>
     </div>
-
     <script src="js/login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="460598749585-69lkjvc6jtnibrcgbpuspmme41j8crs2.apps.googleusercontent.com">
+    
 </body>
 
 </html>
