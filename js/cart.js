@@ -27,12 +27,9 @@ numeroCuenta.addEventListener("input", event => { // Comprobaciones en timepo re
   if (numeroCuenta.checkValidity() && transferencia.checked) { metodoDePago.classList.remove("is-invalid"), metodoDePago.classList.add("is-valid") } else { metodoDePago.classList.add("is-invalid"), metodoDePago.classList.remove("is-valid") }
 });
 btnAlerta.addEventListener("click", event => { // Btn finalizar compra
-  // If para imprimir aviso sobre "debe ingresar forma de pago"
-  if ((numeroTarjeta.checkValidity() && numeroSeg.checkValidity() && numeroCuenta.checkValidity()) || !(!tarjetaCredito.checked || !transferencia.checked)) { metodoDePago.classList.add("is-valid"), metodoDePago.classList.remove("is-invalid") } else { metodoDePago.classList.remove("is-valid"), metodoDePago.classList.add("is-invalid") };
-  // If para agregar alerta sobre carrito vacio
-  if (datos.length == 0) { let divPrincipal1 = document.createElement("div"); divPrincipal1.innerHTML = `<div class="form-control is-invalid text-center">Carrito vacio</div><div class="invalid-feedback">Es necesario poner al menos un articulo en el carrito</div><hr>`; divMain.appendChild(divPrincipal1); };
-  // Si el form esta completo agrego alerta exitosa y evito el envio del formulario
-  if (document.getElementById("formulario").checkValidity() == true) { event.preventDefault(), document.getElementById("alertaEnvio").innerHTML = `<div class="alert alert-success p-4 row" id="alertaCompra" style="top: 30%; z-index: 1;"><div class="col-6">¡Has comprado con exito!</div><button type="button" class="btn-close col-6 ms-auto" data-bs-dismiss="alert" aria-label="Close" onclick="redirigir()"></button></div>` };
+  if ((numeroTarjeta.checkValidity() && numeroSeg.checkValidity() && numeroCuenta.checkValidity()) || !(!tarjetaCredito.checked || !transferencia.checked)) { metodoDePago.classList.add("is-valid"), metodoDePago.classList.remove("is-invalid") } else { metodoDePago.classList.remove("is-valid"), metodoDePago.classList.add("is-invalid") }; // If para imprimir aviso sobre "debe ingresar forma de pago"
+  if (datos.length == 0) { let divPrincipal1 = document.createElement("div"); divPrincipal1.innerHTML = `<div class="form-control is-invalid text-center">Carrito vacio</div><div class="invalid-feedback">Es necesario poner al menos un articulo en el carrito</div><hr>`; divMain.appendChild(divPrincipal1); }; // If para agregar alerta sobre carrito vacio
+  if (document.getElementById("formulario").checkValidity() == true) { event.preventDefault(), document.getElementById("alertaEnvio").innerHTML = `<div class="alert alert-success p-4 row" id="alertaCompra" style="top: 30%; z-index: 1;"><div class="col-6">¡Has comprado con exito!</div><button type="button" class="btn-close col-6 ms-auto" data-bs-dismiss="alert" aria-label="Close" onclick="redirigir()"></button></div>` }; // Si el form esta completo agrego alerta exitosa y evito el envio del formulario
 });
 tarjetaCredito.addEventListener("input", event => { // Opcion pago con tarjeta de credito
   numeroCuenta.disabled = true, vencimientoMonth.disabled = false, vencimientoYear.disabled = false, numeroSeg.disabled = false, numeroTarjeta.disabled = false, metodoDePago.innerHTML = `Tarjeta de credito`
@@ -40,9 +37,7 @@ tarjetaCredito.addEventListener("input", event => { // Opcion pago con tarjeta d
 transferencia.addEventListener("input", event => { // Opcion pago con transferencia bancaria
   numeroCuenta.disabled = false, vencimientoMonth.disabled = true, vencimientoYear.disabled = true, numeroSeg.disabled = true, numeroTarjeta.disabled = true, metodoDePago.innerHTML = `Transferencia bancaria`
 });
-function redirigir() { // Redirigir y limpia localStorage
-  localStorage.removeItem('productInit'), location.href = "index.html"
-};
+function redirigir() { localStorage.removeItem('productInit'), location.href = "index.html" }; // Redirigir y limpiar localStorage
 function crearCompra(elementoArray) { // Agregar elementos al dom
   /* Creo todos los elementos necesarios */ let divPrincipal = document.createElement("div"), hr = document.createElement("hr"), imgDiv = document.createElement("div"), nameDiv = document.createElement("div"), costDiv = document.createElement("div"), inputDiv = document.createElement("div"), inputInterior = document.createElement("input"), divInvalid = document.createElement("div"), diValid = document.createElement("div"), subTotalDivCompra = document.createElement("div"), divEliminar = document.createElement("div"), btnEliminar = document.createElement("button");
   /* Clases de los elementos */ divPrincipal.className += "row", hr.className += "mt-2", imgDiv.className += "col-4 col-md-2 mb-1", nameDiv.className += "col-4 col-md-2 mb-1 text-center", costDiv.className += "col-4 col-md-2 mb-1 text-center", inputInterior.className += "form-control inputInterior", divInvalid.className += "invalid-feedback", diValid.className += "valid-feedback", inputDiv.className += "col-4 col-md-2 mb-1", subTotalDivCompra.className += "col-4 col-md-2 mb-1 fw-bold text-center", btnEliminar.className += "btn btn-danger btn-small mx-auto d-block", divEliminar.className += "col-4 col-md-2 mb-1"
