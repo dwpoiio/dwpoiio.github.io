@@ -38,14 +38,7 @@ btnAlerta.addEventListener("click", event => { // Btn finalizar compra
   // If para agregar alerta sobre carrito vacio
   if (datos.length == 0) { let divPrincipal1 = document.createElement("div"); divPrincipal1.innerHTML = `<div class="form-control is-invalid text-center">Carrito vacio</div><div class="invalid-feedback">Es necesario poner al menos un articulo en el carrito</div><hr>`; divMain.appendChild(divPrincipal1); };
   // Si el form esta completo agrego alerta exitosa y evito el envio del formulario
-  if (document.getElementById("formulario").checkValidity() == true) {
-    event.preventDefault()
-    document.getElementById("alertaEnvio").innerHTML = `
-        <div class="alert alert-success p-4 row" id="alertaCompra" style="top: 30%; z-index: 1;">
-          <div class="col-6">¡Has comprado con exito!</div>
-          <button type="button" class="btn-close col-6 ms-auto" data-bs-dismiss="alert" aria-label="Close" onclick="redirigir()"></button>
-        </div>`
-  };
+  if (document.getElementById("formulario").checkValidity() == true) { event.preventDefault(), document.getElementById("alertaEnvio").innerHTML = `<div class="alert alert-success p-4 row" id="alertaCompra" style="top: 30%; z-index: 1;"><div class="col-6">¡Has comprado con exito!</div><button type="button" class="btn-close col-6 ms-auto" data-bs-dismiss="alert" aria-label="Close" onclick="redirigir()"></button></div>` };
 });
 tarjetaCredito.addEventListener("input", event => { // Opcion pago con tarjeta de credito
   numeroCuenta.disabled = true, vencimientoMonth.disabled = false, vencimientoYear.disabled = false, numeroSeg.disabled = false, numeroTarjeta.disabled = false, metodoDePago.innerHTML = `Tarjeta de credito`
@@ -95,3 +88,4 @@ function imprimirTipoEnvio(importe) { // Variar porcentaje de tipo de envio
       }, false)
     })
 })();
+
