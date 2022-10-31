@@ -55,38 +55,34 @@ if (!JSON.parse(localStorage.getItem("productInit")) || (localStorage.getItem("p
     })
 }
 
-document.getElementById("navegador").innerHTML += `<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-<div class="container">
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav w-100 justify-content-between">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="categories.html">Categorías</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="sell.html">Vender</a>
-      </li>
-      <!-- Agrego el menu desplegable -->
-      <li class="nav-item dropdown">
-        <!-- A con id nav-usuario -->
-        <a class="nav-link active dropdown-toggle" href="#" id="nav-usuario" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"></a>
-        <!-- Agrego las opciones del menu -->
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-          <li><a class="dropdown-item" href="cart.html">Mi carrito (${JSON.parse(localStorage.getItem("productInit")).length})</a></li>
-          <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-          <li><a class="dropdown-item" href="login.html" >Cerrar sesion</a></li>
+document.getElementById("navegador").innerHTML += `
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="nav-usuario" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html">Cerrar sesion</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</nav>`;
-
-
+      </div>
+    </div>
+  </nav>`;

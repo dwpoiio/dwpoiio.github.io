@@ -153,33 +153,38 @@
                       <div class="valid-feedback">Dato ingresado correctamente</div>
                     </div>
                     <div class="col-md-6 mb-3">
-                      <label for="vencimiento">Vencimiento (MM/AA)</label>
-                      <select name="mes" id="vencimientoMonth" required>
-                        <option value="01">Enero</option>
-                        <option value="02">Febrero</option>
-                        <option value="03">Marzo</option>
-                        <option value="04">Abril</option>
-                        <option value="05">Mayo</option>
-                        <option value="06">Junio</option>
-                        <option value="07">Julio</option>
-                        <option value="08">Agosto</option>
-                        <option value="09">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12">Diciembre</option>
-                      </select>
-                      <select name="anio" id="vencimientoYear" required>
-                        <option value="22"> 2022</option>
-                        <option value="23"> 2023</option>
-                        <option value="24"> 2024</option>
-                        <option value="25"> 2025</option>
-                        <option value="26"> 2026</option>
-                        <option value="27"> 2027</option>
-                        <option value="28"> 2028</option>
-                      </select>
-                      <div class="invalid-feedback">Tarjeta vencida</div>
-                      <div class="valid-feedback">Dato ingresado correctamente</div>
+                      <div class="row">
+                        <label for="vencimiento">Vencimiento (MM/AA)</label>
+                        <select class="form-control" name="mes" id="vencimientoMonth" required>
+                          <option value="">None</option>
+                          <option value="01">Enero</option>
+                          <option value="02">Febrero</option>
+                          <option value="03">Marzo</option>
+                          <option value="04">Abril</option>
+                          <option value="05">Mayo</option>
+                          <option value="06">Junio</option>
+                          <option value="07">Julio</option>
+                          <option value="08">Agosto</option>
+                          <option value="09">Septiembre</option>
+                          <option value="10">Octubre</option>
+                          <option value="11">Noviembre</option>
+                          <option value="12">Diciembre</option>
+                        </select>
+                        <select class="form-control" name="anio" id="vencimientoYear" required>
+                          <option value="">None</option>
+                          <option value="22"> 2022</option>
+                          <option value="23"> 2023</option>
+                          <option value="24"> 2024</option>
+                          <option value="25"> 2025</option>
+                          <option value="26"> 2026</option>
+                          <option value="27"> 2027</option>
+                          <option value="28"> 2028</option>
+                        </select>
+                        <div class="invalid-feedback">Fecha invalida</div>
+                        <div class="valid-feedback">Dato ingresado correctamente</div>
+                      </div>
                     </div>
+
                   </div>
                   <div class="custom-control custom-radio">
                     <input id="transferencia" name="medioPago" type="radio" class="custom-control-input"
@@ -228,7 +233,6 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
