@@ -1,26 +1,20 @@
-// Tomo la informacion de inicio de sesion Y las guardo en variables escribo en el nav el nombre de usuario
-let nombre_usuario = localStorage.getItem("usuario"); document.getElementById("nav-usuario").innerHTML = nombre_usuario;
-// Tomo todos los elementos necesarios por el ID
-let divMain = document.getElementById("main"), subTotalDiv = document.getElementById("subTotal"), cantidadDiv = document.getElementById("cantidad"), envioGold = document.getElementById("goldradio"), envioPremium = document.getElementById("premiumradio"), envioStandard = document.getElementById("standardradio"), tarjetaCredito = document.getElementById("tarjetaCredito"), transferencia = document.getElementById("transferencia"), numeroSeg = document.getElementById("numeroSeg"), numeroTarjeta = document.getElementById("numeroTarjeta"), numeroCuenta = document.getElementById("numeroCuenta"), vencimientoMonth = document.getElementById("vencimientoMonth"), vencimientoYear = document.getElementById("vencimientoYear"), metodoDePago = document.getElementById("metodoDePago"), btnAlerta = document.getElementById("btnAlerta");
+let nombre_usuario = localStorage.getItem("usuario"); document.getElementById("nav-usuario").innerHTML = nombre_usuario; /* Tomo la informacion de inicio de sesion Y las guardo en variables escribo en el nav el nombre de usuario */
+let divMain = document.getElementById("main"), subTotalDiv = document.getElementById("subTotal"), cantidadDiv = document.getElementById("cantidad"), envioGold = document.getElementById("goldradio"), envioPremium = document.getElementById("premiumradio"), envioStandard = document.getElementById("standardradio"), tarjetaCredito = document.getElementById("tarjetaCredito"), transferencia = document.getElementById("transferencia"), numeroSeg = document.getElementById("numeroSeg"), numeroTarjeta = document.getElementById("numeroTarjeta"), numeroCuenta = document.getElementById("numeroCuenta"), vencimientoMonth = document.getElementById("vencimientoMonth"), vencimientoYear = document.getElementById("vencimientoYear"), metodoDePago = document.getElementById("metodoDePago"), btnAlerta = document.getElementById("btnAlerta"); /* Tomo todos los elementos necesarios por el ID */
 let datos = JSON.parse(localStorage.getItem("productInit")); // Creo Datos para usar el localStorage de productInit
 let sumaSubTotal = 0, tipoEnvio = 15;
 for (let i = 0; i < datos.length; i++) { // Recorro mediante un for el array datos
   crearCompra(datos[i]) // Coloco en pantalla los elementos
   let btnDelete = document.getElementById(datos[i].id) // Btn para borrar los elementos y quitarlos del array
-  btnDelete.addEventListener("click", event => {
-    if (datos[i].id == btnDelete.id) { datos.splice(i, 1), localStorage.setItem("productInit", JSON.stringify(datos)), location.reload() }
-  })
+  btnDelete.addEventListener("click", event => { if (datos[i].id == btnDelete.id) { datos.splice(i, 1), localStorage.setItem("productInit", JSON.stringify(datos)), location.reload() } })
   // ############ Subtotal ############
-  /* Pasar datos a Dolares si es necesario */ if (datos[i].currency === "UYU") { sumaSubTotal += (datos[i].subTotal / 40) } else { sumaSubTotal += datos[i].subTotal };
-  imprimirTipoEnvio(sumaSubTotal) //Imprimir costos
-  // Actualizar cada vez que ocurre un cambio en el input
-  document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => {
+  if (datos[i].currency === "UYU") { sumaSubTotal += (datos[i].subTotal / 40) } else { sumaSubTotal += datos[i].subTotal }; /* Pasar datos a Dolares si es necesario */
+  imprimirTipoEnvio(sumaSubTotal) //Imprimir valores
+  document.getElementsByClassName("inputInterior")[i].addEventListener("input", event => { // Actualizar cada vez que ocurre un cambio en el input
     let sumaTotal = 0
     for (let i = 0; i < JSON.parse(localStorage.getItem("productInit")).length; i++) {
       let datos1 = JSON.parse(localStorage.getItem("productInit"));
       if (datos1[i].currency === "UYU") { sumaTotal += (datos1[i].subTotal / 40) } else { sumaTotal += datos1[i].subTotal }
-    }
-    imprimirTipoEnvio(sumaTotal) //Imprimir costos
+    } imprimirTipoEnvio(sumaTotal) //Imprimir valores
   })
 };
 numeroTarjeta.addEventListener("input", event => { // Comprobaciones en timepo real para el pago con tarjeta
@@ -88,4 +82,3 @@ function imprimirTipoEnvio(importe) { // Variar porcentaje de tipo de envio
       }, false)
     })
 })();
-
