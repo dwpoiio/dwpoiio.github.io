@@ -9,6 +9,8 @@ let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
 let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
 
+let nombre_usuario = JSON.parse(localStorage.getItem('usuario')).email; document.getElementById("nav-usuario").innerHTML = nombre_usuario; //Tomo la informacion desde localstorage y lo pongo en el nav
+
 //Función que se utiliza para actualizar los costos de publicación
 function updateTotalCosts(){
     let unitProductCostHTML = document.getElementById("productCostText");
@@ -147,6 +149,3 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
-
-let nombre_usuario = localStorage.getItem('usuario');
-document.getElementById("nav-usuario").innerHTML = nombre_usuario;

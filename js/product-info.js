@@ -1,5 +1,5 @@
 let divListaProductos = document.getElementById("products-info"), divListaComentarios = document.getElementById("products-info-comentarios"), divHacerComentario = document.getElementById("hacer-comentario"), divProductosRelacionados = document.getElementById("related-products"); /* tomo los elementos con id products */
-let nombre_usuario = localStorage.getItem('usuario'); document.getElementById("nav-usuario").innerHTML = nombre_usuario; // nombre de usuario en nav
+let nombre_usuario = JSON.parse(localStorage.getItem('usuario')).email; document.getElementById("nav-usuario").innerHTML = nombre_usuario; //Tomo la informacion desde localstorage y lo pongo en el nav
 let categoria = localStorage.getItem("productID"); //creo una variable con el catID guardado en la pagina
 let div = document.createElement('div');
 function setProductID(id) { // Funcion para guardar el productId

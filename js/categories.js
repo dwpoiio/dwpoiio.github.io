@@ -6,6 +6,8 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+let nombre_usuario = JSON.parse(localStorage.getItem('usuario')).email; document.getElementById("nav-usuario").innerHTML = nombre_usuario; //Tomo la informacion desde localstorage y lo pongo en el nav
+
 function sortCategories(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME) {
@@ -140,6 +142,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showCategoriesList();
     });
 });
-
-let nombre_usuario = localStorage.getItem('usuario');
-document.getElementById("nav-usuario").innerHTML = nombre_usuario;

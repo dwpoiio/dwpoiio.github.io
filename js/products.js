@@ -1,3 +1,4 @@
+let nombre_usuario = JSON.parse(localStorage.getItem('usuario')).email; document.getElementById("nav-usuario").innerHTML = nombre_usuario; //Tomo la informacion desde localstorage y lo pongo en el nav
 //tomo el elemento con id products
 let divListaProductos = document.getElementById("products")
 let divTitulo = document.getElementById("titulo")
@@ -135,7 +136,4 @@ fetch(PRODUCTS_URL + categoria + EXT_TYPE)
         });
 
     });
-
-let nombre_usuario = localStorage.getItem('usuario');
-document.getElementById("nav-usuario").innerHTML = nombre_usuario;
 
