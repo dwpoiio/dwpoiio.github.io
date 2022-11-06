@@ -9,38 +9,23 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
   <!-- Navegador -->
   <div id="navegador"></div>
+  <img src="" id="tableBanner" style="height: 100px;">
   <main>
     <!-- Form main -->
     <div class="container">
       <form class="row mx-auto needs-validation" id="formPerfil" novalidate>
-        <div class="my-5 col-12">
-          <h2 class="d-inline">Perfil</h2>
-          <div class="w-50 float-end">
-          <img src="img/img_perfil.png" class="img-thumbnail" alt="img_perfil">
+        <div class="my-1 col-12">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Perfil</h2>
+            <img src="img/img_perfil.png" class="img-thumbnail" alt="img_perfil" style="height: 100px;" id="imgPerfil">
           </div>
         </div>
-        <hr>
+        <hr class="mt-2">
         <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
           <label for="pNombre" class="form-label">Primer nombre*</label>
           <input type="text" class="form-control" id="pNombre" required>
@@ -68,6 +53,10 @@
           <div class="valid-feedback">Dato ingresado correctamente</div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+          <label for="inputImg" class="form-label">Imagen de perfil</label>
+          <input type="file" class="form-control" aria-label="inputImg" id="inputImg">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
           <label for="telefono" class="form-label">Telefono de contacto</label>
           <input type="number" class="form-control" id="telefono">
         </div>
@@ -81,11 +70,9 @@
   <!-- Footer -->
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
+      <p>Este sitio forma parte de<a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+          Programar</a>-2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
