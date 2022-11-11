@@ -1,7 +1,8 @@
 let usuario = JSON.parse(localStorage.getItem('usuario')); document.getElementById("nav-usuario").innerHTML = usuario.email; //Tomo la informacion desde localstorage y lo pongo en el nav
 let pNombre = document.getElementById("pNombre"), sNombre = document.getElementById("sNombre"), pApellido = document.getElementById("pApellido"), sApellido = document.getElementById("sApellido"), telefono = document.getElementById("telefono"), email = document.getElementById("email"), btnGuardar = document.getElementById("btnGuardar"), formPerfil = document.getElementById("formPerfil"), inputImg = document.getElementById("inputImg"), imgPerfil = document.getElementById("imgPerfil"); /* Recojo todos los elementos mediante ID*/
 
-email.value = usuario.email;
+email.value = usuario.email; // Imprimo en pantalla el Email
+// Coloco los valores en los inputs si estos valores estan existen en el localstorage
 if (usuario.primerNombre != undefined) { pNombre.value = usuario.primerNombre };
 if (usuario.segundoNombre != undefined) { sNombre.value = usuario.segundoNombre };
 if (usuario.primerNombre != undefined) { pApellido.value = usuario.primerApellido };
@@ -9,7 +10,7 @@ if (usuario.primerNombre != undefined) { sApellido.value = usuario.segundoApelli
 if (usuario.primerNombre != undefined) { telefono.value = usuario.telefono };
 if (usuario.imagenPerfil != undefined) { imgPerfil.src = usuario.imagenPerfil };
 
-inputImg.addEventListener("change", (e) => {
+inputImg.addEventListener("change", (e) => { // Convierto el inputfile en base64
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0])
     reader.onload = e => {
@@ -19,7 +20,7 @@ inputImg.addEventListener("change", (e) => {
     }
 });
 
-btnGuardar.addEventListener("click", event => {
+btnGuardar.addEventListener("click", event => { // Guardo la info en el localstorage usuario
     let arrayUsuario = {
         primerNombre: pNombre.value,
         segundoNombre: sNombre.value,
