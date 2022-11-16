@@ -34,6 +34,8 @@ btnGuardar.addEventListener("click", event => { // Guardo la info en el localsto
     localStorage.setItem('usuario', JSON.stringify(arrayUsuario))
 });
 
+console.log(JSON.parse(localStorage.getItem('usuario')));
+
 (function () { // Funcion de bootstrap para validar formulario
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
